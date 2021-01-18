@@ -1,0 +1,149 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap");
+@-webkit-keyframes bounce {
+  0%, 100% {
+    -webkit-transform: translateY(-1rem);
+    -ms-transform: translateY(-1rem);
+    transform: translateY(-1rem); }
+  50% {
+    -webkit-transform: translateY(1rem);
+    -ms-transform: translateY(1rem);
+    transform: translateY(1rem); } }
+@-o-keyframes bounce {
+  0%, 100% {
+    -webkit-transform: translateY(-1rem);
+    -ms-transform: translateY(-1rem);
+    transform: translateY(-1rem); }
+  50% {
+    -webkit-transform: translateY(1rem);
+    -ms-transform: translateY(1rem);
+    transform: translateY(1rem); } }
+@keyframes bounce {
+  0%, 100% {
+    -webkit-transform: translateY(-1rem);
+    -ms-transform: translateY(-1rem);
+    transform: translateY(-1rem); }
+  50% {
+    -webkit-transform: translateY(1rem);
+    -ms-transform: translateY(1rem);
+    transform: translateY(1rem); } }
+@-webkit-keyframes grow {
+  0% {
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0); }
+  100% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1); } }
+@-o-keyframes grow {
+  0% {
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0); }
+  100% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1); } }
+@keyframes grow {
+  0% {
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0); }
+  100% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1); } }
+html {
+  font-family: 'Manrope', sans-serif;
+  font-size: min(max(1rem, 4vw), 16px); }
+
+.is-transition {
+  pointer-events: none;
+  cursor: progress; }
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: black;
+  z-index: 10; }
+
+.parallax {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -10;
+  -webkit-animation: grow 1s 1;
+  animation: grow 1s 1; }
+
+.background-image {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  -webkit-transform-origin: center center;
+  -ms-transform-origin: center center;
+  -o-transform-origin: center center;
+  transform-origin: center center;
+  -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transition-duration: 1ms;
+  -o-transition-duration: 1ms;
+  transition-duration: 1ms; }
+
+.slice1 {
+  width: 19.5rem; }
+
+.slice2 {
+  width: 13.5rem; }
+
+.slice3 {
+  width: 25.5rem; }
+
+.slice4 {
+  width: 21rem; }
+
+.slice5 {
+  width: 34.5rem; }
+
+.slice6 {
+  width: 9rem; }
+
+.slice7 {
+  width: 39rem; }
+
+.slice8 {
+  width: 40.5rem; }
+
+.slice9 {
+  width: 34.5rem; }
+
+.slice10 {
+  width: 6rem; }
+
+.slice11 {
+  width: 15rem; }
+
+.slice12 {
+  width: 15rem; }
+
+.slice13 {
+  width: 25.5rem; }
+
+.slice14 {
+  width: 15rem; }
+
+.slice15 {
+  width: 28.5rem; }
+
+.slice16 {
+  width: 15rem; }
+
+/*# sourceMappingURL=styles_new.css.map */

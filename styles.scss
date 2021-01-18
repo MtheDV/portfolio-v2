@@ -1,0 +1,589 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,700&display=swap');
+
+@mixin transition($property1, $property2) {
+  -webkit-transition: $property1 $property2;
+  -o-transition: $property1 $property2;
+  transition: $property1 $property2;
+}
+
+@mixin transform($property) {
+  -webkit-transform: $property;
+  -ms-transform: $property;
+  -o-transform: $property;
+  transform: $property;
+}
+
+@mixin transform-origin($property1, $property2) {
+  -webkit-transform-origin: $property1 $property2;
+  -ms-transform-origin: $property1 $property2;
+  -o-transform-origin: $property1 $property2;
+  transform-origin: $property1 $property2;
+}
+
+@mixin transition-duration($property1) {
+  -webkit-transition-duration: $property1;
+  -o-transition-duration: $property1;
+  transition-duration: $property1;
+}
+
+@mixin animation-name($property1) {
+  -webkit-animation-name: $property1;
+  -o-animation-name: $property1;
+  animation-name: $property1;
+}
+
+@mixin animation-duration($property1) {
+  -webkit-animation-duration: $property1;
+  -o-animation-duration: $property1;
+  animation-duration: $property1;
+}
+
+@mixin animation-iteration-count($property1) {
+  -webkit-animation-iteration-count: $property1;
+  -o-animation-iteration-count: $property1;
+  animation-iteration-count: $property1;
+}
+
+@mixin box-sizing($property1) {
+  -webkit-box-sizing: $property1;
+  box-sizing: $property1;
+}
+
+* {
+  @include transition(all, .3s);
+}
+
+html {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 0.8vw;
+}
+
+body {
+  background-color: white;
+}
+
+// HEADER
+header {
+  z-index: 10;
+}
+
+.logo {
+  cursor: pointer;
+
+  position: fixed;
+  top: 2.5rem;
+  left: 2.5rem;
+
+  height: 3.5rem;
+  width: auto;
+
+  z-index: inherit;
+}
+
+.header_buttons {
+  font-size: 1.75rem;
+  position: fixed;
+  z-index: inherit;
+}
+
+.button_about {
+  position: inherit;
+  top: 2.5rem;
+  right: 24.25rem;
+}
+.button_projects {
+  position: inherit;
+  top: 2.5rem;
+  right: 14.5rem;
+}
+.button_contact {
+  position: inherit;
+  top: 2.5rem;
+  right: 2rem;
+}
+.button_linkedin {
+  position: inherit;
+  bottom: 2.5rem;
+  left: 2rem;
+}
+.button_instagram {
+  position: inherit;
+  bottom: 2.5rem;
+  left: 12.5rem;
+}
+.exit_overlay {
+  display: none;
+}
+.hamburger {
+  display: none;
+}
+.return_top {
+  display: none;
+}
+// HEADER
+
+a {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  margin-left: .5em;
+  margin-right: .5em;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+
+  cursor: pointer;
+
+  background-color: black;
+  color: white;
+  &:hover {
+    color: dodgerblue;
+  }
+
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 3rem;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 1.75rem;
+}
+
+p {
+  font-size: 1.75rem;
+  text-align: justify;
+}
+
+// PARALLAX
+.parallax_mobile {
+  display: none;
+}
+
+.parallax {
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.background_text {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  color: white;
+  background-color: black;
+  text-align: center;
+  width: 49rem;
+  height: 9rem;
+  border-radius: .25rem;
+
+  @include transform-origin(center, center);
+  @include transform(translate(0, 0));
+  @include transition-duration(1ms);
+}
+
+.background_image {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+
+  @include transform-origin(center, center);
+  @include transform(translate(0, 0));
+  @include transition-duration(1ms);
+}
+
+.slice1 {
+  width: 20%;
+}
+
+.slice2 {
+  width: 20%;
+}
+
+.slice6 {
+  width: 10%;
+}
+
+.slice3 {
+  width: 20%;
+}
+
+.slice4 {
+  width: 45%;
+}
+
+.slice5 {
+  width: 17%;
+}
+
+.slice7 {
+  width: 30%;
+}
+
+@keyframes bounce {
+  0%, 100% { @include transform(translateY(-1rem)) }
+  50% { @include transform(translateY(1rem)) }
+}
+
+.scroll_arrow {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 5rem;
+  bottom: 7rem;
+
+  @include transform-origin(center, bottom);
+  @include animation-name(bounce);
+  @include animation-duration(3s);
+  @include animation-iteration-count(infinite);
+
+  z-index: 12;
+}
+// PARALLAX
+
+
+// CONTAINER
+.container {
+  display: grid;
+  grid-template-columns: [page-start] 25vw [content-start] 50vw [content-end] 25vw [page-end];
+  grid-template-rows: [skills] auto [logo_display] auto [proj] auto [github] auto [contact] auto [footer] auto [page-end];
+  gap: 8rem 0;
+  justify-items: center;
+
+  position: absolute;
+  top: 105%;
+  left: 0;
+  right: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+// CONTAINER
+
+// SKILLS
+.skills {
+  grid-column: content-start / content-end;
+  grid-row: skills / logo_display;
+
+  p {
+    text-align: justify;
+  }
+}
+// SKILLS
+
+// LOGOS
+.logo_display {
+  grid-column: content-start / content-end;
+  grid-row: logo_display / proj;
+
+  display: flex;
+  flex-wrap: nowrap;
+
+  img {
+    height: 11rem;
+    margin: 2rem;
+  }
+}
+// LOGOS
+
+// PROJECTS
+.projects {
+  grid-column: content-start / content-end;
+  grid-row: proj / github;
+};
+
+.project {
+  display: flex;
+  justify-content: space-between;
+
+  a {
+    font-size: 1.5rem;
+    margin: 1rem 1rem 0 0;
+  }
+
+  img {
+    width: 35rem;
+    height: auto;
+    margin-top: 2rem;
+  }
+}
+
+.order1 {
+  order: 1;
+  margin-right: 2rem;
+}
+
+.order2 {
+  order: 2;
+  margin-left: 2rem;
+}
+// PROJECTS
+
+// GITHUB
+.github {
+  font-size: 1.5rem;
+  grid-column: content-start / content-end;
+  grid-row: github / contact;
+  justify-self: end;
+}
+// GITHUB
+
+// CONTACT FORM
+.contact {
+  grid-column: content-start / content-end;
+  grid-row: contact / page-end;
+
+  width: 100%;
+
+  input {
+    font-size: 1.25rem;
+    width: 50%;
+    height: 3.5rem;
+    padding: .25rem .5rem .25rem;
+    margin-bottom: 2rem;
+    border: 0.35rem solid black;
+    border-radius: 0.25rem;
+    @include box-sizing(border-box);
+  }
+
+  textarea {
+    font: inherit;
+    font-size: 1.25rem;
+    width: 100%;
+    height: 24rem;
+    padding: .5rem;
+    margin-bottom: 2rem;
+    border: 0.35rem solid black;
+    border-radius: 0.25rem;
+    @include box-sizing(border-box);
+  }
+
+  button {
+    font-size: 2rem;
+    background-color: transparent;
+    border: none;
+    float: right;
+  }
+}
+// CONTACT FORM
+
+// FOOTER
+footer {
+  grid-column: page-start / page-end;
+  grid-row: footer / page-end;
+
+  width: 100%;
+  margin-top: 22rem;
+  margin-bottom: -2rem;
+
+  .footer_image {
+    width: 100%;
+    height: auto;
+  }
+
+  z-index: -1;
+}
+// FOOTER
+
+
+@media screen and (max-width: 450px) {
+  html {
+    font-size: 3.75vw;
+
+    text-align: center;
+  }
+
+  a {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .logo {
+    height: 3rem;
+    width: auto;
+    z-index: 11;
+  }
+
+  .header_buttons {
+    display: none;
+    position: fixed;
+    background-color: white;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+
+    a {
+      background-color: white;
+      color: black;
+    }
+  }
+  .button_about {
+    position: inherit;
+    top: 25%;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+  .button_projects {
+    position: inherit;
+    top: 40%;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+  .button_contact {
+    position: inherit;
+    top: 55%;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+  .button_linkedin {
+    position: inherit;
+    top: 70%;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+  .button_instagram {
+    position: inherit;
+    top: 85%;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+
+  .exit_overlay {
+    display: block;
+    position: inherit;
+    top: 2.5rem;
+    right: 2.8rem;
+  }
+
+  .buttons_mobile {
+    .hamburger {
+      display: block;
+      position: fixed;
+      top: 2.5rem;
+      right: 2.5rem;
+
+      z-index: inherit;
+    }
+    .return_top {
+      display: block;
+      position: fixed;
+      bottom: 2.5rem;
+      right: 2.5rem;
+
+      opacity: 0;
+      z-index: inherit;
+    }
+    z-index: inherit;
+  }
+
+  .parallax_mobile {
+    display: block;
+    position: absolute;
+    top: 20%;
+    left: 5vw;
+    right: 0;
+    height: 150%;
+    overflow-x: hidden;
+
+    text-align: left;
+
+    img {
+      position: inherit;
+      top: 1rem;
+      right: -12.2rem;
+      width: 22rem;
+      @include transform(rotate(-12deg));
+    }
+  }
+  .parallax {
+    display: none;
+  }
+
+  .container {
+    grid-template-columns: [page-start] 5vw [content-start] 90vw [content-end] 5vw [page-end];
+  }
+
+  .skills {
+    p {
+      text-align: left;
+    }
+  }
+
+  .logo_display {
+    margin-left: 20rem;
+    img {
+      margin: 0.5rem;
+      height: 7rem;
+    }
+  }
+
+  .project {
+    flex-wrap: wrap;
+
+    p {
+      max-width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+      text-align: left;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .order1 {
+    order: 0;
+    margin: 0;
+  }
+  .order2 {
+    order: 0;
+    margin: 0;
+  }
+
+  .github {
+    justify-self: center;
+  }
+
+  .contact {
+
+    input {
+      width: 100%;
+    }
+
+    button {
+      margin-bottom: 5rem;
+    }
+  }
+
+  footer {
+    margin-top: -5rem;
+
+    .footer_image {
+      width: 500%;
+      height: auto;
+    }
+  }
+}
