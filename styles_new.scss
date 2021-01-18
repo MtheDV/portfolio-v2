@@ -108,14 +108,22 @@ $circle-width: 15rem;
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(12, 99px);
-  grid-template-rows: 30rem;
+  grid-template-columns: repeat(12, 5rem);
+  grid-template-rows: 100vh;
   grid-gap: 20px;
   justify-content: center;
+
+  .nav {
+    grid-column: 1 / span 2;
+  }
+  .logo-nav {
+    grid-column: 12 / span 1;
+    justify-self: right;
+  }
 }
 
 nav {
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
 
@@ -127,6 +135,7 @@ nav {
     li {
       color: black;
       padding-left: 2rem;
+      font-weight: bold;
 
       a {
         text-decoration: none;
@@ -139,19 +148,16 @@ nav {
     }
   }
   .navigation-links {
-    position: inherit;
   }
   .socials-links {
-    position: inherit;
-    bottom: 0;
+    margin-top: auto;
   }
-  .logo-nav {
-    position: inherit;
-    bottom: 0;
-    right: 0;
+}
+.logo-nav {
+  margin-top: auto;
+  margin-bottom: 3rem;
 
-    img {
-      width: 5rem;
-    }
+  img {
+    width: 3.25rem;
   }
 }
