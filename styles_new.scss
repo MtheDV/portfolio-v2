@@ -105,3 +105,53 @@ $circle-width: 15rem;
 .slice14 { width: $circle-width; }
 .slice15 { width: $circle-width * 1.9; }
 .slice16 { width: $circle-width * 1; }
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(12, 99px);
+  grid-template-rows: 30rem;
+  grid-gap: 20px;
+  justify-content: center;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      color: black;
+      padding-left: 2rem;
+
+      a {
+        text-decoration: none;
+        color: black;
+        margin-left: -2rem;
+        &:hover {
+          padding-left: 2rem;
+        }
+      }
+    }
+  }
+  .navigation-links {
+    position: inherit;
+  }
+  .socials-links {
+    position: inherit;
+    bottom: 0;
+  }
+  .logo-nav {
+    position: inherit;
+    bottom: 0;
+    right: 0;
+
+    img {
+      width: 5rem;
+    }
+  }
+}
