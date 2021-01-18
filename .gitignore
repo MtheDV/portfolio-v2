@@ -1,0 +1,6 @@
+# Local Netlify folder
+.*
+!.lfsconfig
+!.gitignore
+!.gitattributes
+*.map
