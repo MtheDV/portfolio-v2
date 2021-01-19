@@ -67,8 +67,26 @@ html {
   left: 0;
   width: 0;
   height: 100%;
-  background-color: black;
+  background-color: #191919;
   z-index: 10; }
+
+.mouse-circle {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 3rem;
+  height: 3rem;
+  border: 0.25rem solid #191919;
+  border-radius: 100%;
+  z-index: 10;
+  -webkit-transform-origin: center center;
+  -ms-transform-origin: center center;
+  -o-transform-origin: center center;
+  transform-origin: center center;
+  -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0); }
 
 .parallax {
   position: fixed;
@@ -147,42 +165,68 @@ html {
   width: 15rem; }
 
 .grid-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
   display: grid;
   grid-template-columns: repeat(12, 5rem);
-  grid-template-rows: 100vh;
-  grid-gap: 20px;
+  grid-template-rows: 100%;
+  grid-gap: 1.25rem;
   justify-content: center; }
   .grid-container .nav {
     grid-column: 1 / span 2; }
   .grid-container .logo-nav {
     grid-column: 12 / span 1;
     justify-self: right; }
+  .grid-container .barba-grid-content {
+    grid-column: 3 / span 9;
+    grid-row: 1 / span 1; }
 
-nav {
-  position: relative;
-  top: 0;
-  left: 0; }
-  nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0; }
-    nav ul li {
-      color: black;
-      padding-left: 2rem;
-      font-weight: bold; }
-      nav ul li a {
-        text-decoration: none;
-        color: black;
-        margin-left: -2rem; }
-        nav ul li a:hover {
-          padding-left: 2rem; }
-  nav .socials-links {
-    margin-top: auto; }
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+  nav ul li {
+    color: #191919;
+    padding-left: 2rem;
+    font-weight: bold; }
+    nav ul li a {
+      text-decoration: none;
+      color: #191919;
+      margin-left: -2rem; }
+      nav ul li a:hover {
+        padding-left: 2rem; }
+nav .socials-links {
+  margin-top: 0.67rem; }
 
 .logo-nav {
   margin-top: auto;
   margin-bottom: 3rem; }
   .logo-nav img {
     width: 3.25rem; }
+
+.project-view {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: flex-start;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  height: 100vh;
+  overflow-y: scroll; }
+  .project-view .project-element {
+    background-color: lightgray;
+    border-radius: 1rem;
+    width: 17.5rem;
+    height: 17.5rem;
+    margin-bottom: 1.25rem;
+    order: 2;
+    transition: all 0.2s ease-in-out; }
+  .project-view .project-end {
+    width: 100%;
+    height: 6rem;
+    order: 4; }
 
 /*# sourceMappingURL=styles_new.css.map */

@@ -2,10 +2,10 @@
  * created by mathew de vin
  */
 
+///////////////////////////////////////
 ////////////// Parallax ///////////////
 ///////////////////////////////////////
 let parallaxElements = document.getElementsByClassName("parallax_element");
-// let parallaxPage = document.querySelector(".parallax");
 
 function parallaxCalculate(height, width, mouseY, mouseX, speedX, speedY, xOffset, yOffset) {
     return [((((height - mouseY) / height * 100) - 50) * speedY) + yOffset,
@@ -24,7 +24,7 @@ function parallax(e) {
     }
 
     if (width >= 450) {
-        for (let i = 0; i < parallaxElements.length; i++) {
+        for (let i = 0; i < parallaxElements.length; ++i) {
             let idManipulates = parallaxElements[i].id;
             idManipulates = idManipulates.split("_");
             let parallaxCalc = parallaxCalculate(height, width, mouseY, mouseX,
@@ -33,20 +33,86 @@ function parallax(e) {
 
             parallaxElements[i].style["-webkit-transform"] = "translate3d("+ (parallaxCalc[1]) + "vw," + (parallaxCalc[0]) + "vh, 0)";
             parallaxElements[i].style["-ms-transform"] = "translate3d("+ (parallaxCalc[1]) + "vw," + (parallaxCalc[0]) + "vh, 0)";
-            parallaxElements[i].style.transform = "translate3d("+ (parallaxCalc[1]) + "vw," + (parallaxCalc[0]) + "vh, 0) rotate3d(0, 1, 0, " + parallaxCalc[1] * 1.15 + "deg)";
+            parallaxElements[i].style.transform = "translate3d("+ (parallaxCalc[1]) + "vw," + (parallaxCalc[0]) + "vh, 0)";// rotate3d(0, 1, 0, " + parallaxCalc[1] * 1.15 + "deg)";
             parallaxElements[i].style.zIndex = (parallaxElements.length - i).toString();
             parallaxElements[i].style["-webkit-filter"] = "drop-shadow(0 0.25rem " + ((parallaxElements.length - i) / 8) + "rem rgba(0, 0, 0, 0.2))";
             parallaxElements[i].style.filter = "drop-shadow(0 0.25rem " + ((parallaxElements.length - i) / 8) + "rem rgba(0, 0, 0, 0.2))";
         }
     }
 }
-window.addEventListener("mousemove", parallax);
+///////////////////////////////////////
+/////////////// Jiggle ////////////////
+///////////////////////////////////////
+// let randomTimeMax = 5; // in seconds
+// let randomTimeMin = 3; // in seconds
+// let randomMoveMax = 30; // in %
+// let randomMoveMin = -30; // in %
+// const moveDynamicObject = (dynamicObject) => {
+//     let newPosX; let newPosY;
+//     // set random new position
+//     if (dynamicObject.getBoundingClientRect().left + dynamicObject.getBoundingClientRect().width / 2 < window.innerWidth / 2)
+//         newPosX = Math.random() * (randomMoveMax - randomMoveMin / 4) + randomMoveMin / 4;
+//     else
+//         newPosX = Math.random() * (randomMoveMax / 4 - randomMoveMin) + randomMoveMin;
+//     if (dynamicObject.getBoundingClientRect().top + dynamicObject.getBoundingClientRect().height / 2 < window.innerHeight / 2)
+//         newPosY = Math.random() * (randomMoveMax - randomMoveMin / 4) + randomMoveMin / 4;
+//     else
+//         newPosY = Math.random() * (randomMoveMax / 4 - randomMoveMin) + randomMoveMin;
+//
+//     // set random time
+//     let randTime = Math.random() * (randomTimeMax - randomTimeMin) + randomTimeMin;
+//
+//     // update position
+//     dynamicObject.style.transition = "transform " + randTime + "s ease-in-out";
+//     dynamicObject.style["-webkit-transform"] = "translate3d(" + newPosX + "%, " + newPosY + "%, 0)";
+//     dynamicObject.style["-ms-transform"] = "translate3d(" + newPosX + "%, " + newPosY + "%, 0)";
+//     dynamicObject.style.transform =  "translate3d(" + newPosX + "%, " + newPosY + "%, 0)";
+//
+//     // timeout with random time between X and X seconds
+//     setTimeout(moveDynamicObject.bind(null, dynamicObject), randTime * 1000);
+// }
+//
+// apply method to each element
+// for (let i = 0; i < parallaxElements.length; i++) {
+//     moveDynamicObject(parallaxElements[i]);
+// }
+
+///////////////////////////////////////
+/////////// MOUSE POINTER /////////////
+///////////////////////////////////////
+let mouseObject = document.querySelector(".mouse-circle");
+function newMousePosition(e) {
+    let mouseX = e.clientX;
+    let mouseY = e.clientY;
+    let width = Number(mouseObject.offsetWidth) / 2;
+    mouseObject.style["-webkit-transform"] = "translate3d("+ (mouseX - width) + "px," + (mouseY - width) + "px, 0)";
+    mouseObject.style["-ms-transform"] = "translate3d("+ (mouseX - width) + "px," + (mouseY - width) + "px, 0)";
+    mouseObject.style.transform = "translate3d("+ (mouseX - width) + "px," + (mouseY - width) + "px, 0)";
+}
+window.addEventListener("mousemove", (e) => {
+    newMousePosition(e);
+    parallax(e);
+});
 window.dispatchEvent(new Event("mousemove"));
-////////////////////////////////////////
-
-
+///////////////////////////////////////
 /////////// PROJECTS PAGE /////////////
 ///////////////////////////////////////
+let projectElements = document.getElementsByClassName("project-element");
+let projectView = document.querySelector(".project-view");
+function focusProject(e) {
+    if (e.target.className === "project-element") {
+        for (let i = 0; i < projectElements.length; ++i) {
+            projectElements[i].style.order = "2";
+            projectElements[i].style.width  = "17.5rem";
+            projectElements[i].style.height = "17.5rem";
+        }
+        e.target.style.order = "1";
+        e.target.style.width = "100%";
+        e.target.style.height = "36.25rem";
+        projectView.scrollTop = 0;
+    }
+}
+window.addEventListener("click", focusProject);
 
 /*
 ////////// HEADER BUTTONS /////////////
