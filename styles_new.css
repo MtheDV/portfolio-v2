@@ -55,7 +55,12 @@
     transform: scale(1); } }
 html {
   font-family: 'Manrope', sans-serif;
-  font-size: min(max(1rem, 4vw), 16px); }
+  font-size: min(max(1rem, 4vw), 16px);
+  scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  padding: 0; }
 
 .grid-container {
   top: 0;
@@ -63,16 +68,19 @@ html {
   left: 0;
   bottom: 0;
   display: grid;
-  grid-template-columns: repeat(12, 5rem);
+  grid-template-columns: 1fr [grid-s] repeat(12, 5rem) [grid-e] 1fr;
   grid-template-rows: repeat(3, 100vh);
-  grid-gap: 1.25rem;
+  grid-column-gap: 1.25rem;
   justify-content: center; }
   .grid-container .parallax, .grid-container .loading {
     grid-row: 1 / span 1; }
   .grid-container .nav {
-    grid-column: 1 / span 2;
+    grid-column: grid-s / span 2;
     grid-row: 2 / span 1; }
   .grid-container .name {
+    grid-row: 2 / span 1; }
+  .grid-container .name_page {
+    grid-column: 1 / -1;
     grid-row: 2 / span 1; }
 
 .parallax {
@@ -81,7 +89,8 @@ html {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: -10; }
+  z-index: -10;
+  overflow-x: hidden; }
 
 .parallax__image {
   position: inherit;
@@ -154,7 +163,8 @@ html {
   top: 0;
   right: 0;
   bottom: 0;
-  left: 0; }
+  left: 0;
+  overflow: hidden; }
 
 .loading__element {
   position: absolute;
@@ -175,18 +185,34 @@ html {
 
 .nav {
   position: sticky;
-  top: 6rem; }
+  top: 0;
+  z-index: 5; }
+  .nav .nav__element--name {
+    font-size: 10rem;
+    width: 75vw;
+    margin: -3.5rem -12rem;
+    opacity: 0; }
   .nav .links {
-    list-style-type: none;
-    margin: 0;
-    padding: 0; }
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column; }
     .nav .links .links__element {
-      margin-bottom: 0.75rem; }
-      .nav .links .links__element a {
-        font-weight: bolder;
-        text-decoration: none;
-        color: #191919; }
-  .nav .nav__element--logo {
-    width: 3.25rem; }
+      margin-bottom: 0.5rem;
+      font-weight: bolder;
+      text-decoration: none;
+      color: #191919; }
+    .nav .links .nav__element--logo {
+      display: none;
+      align-self: flex-start;
+      height: 2rem; }
+
+.name_page {
+  overflow: hidden; }
+  .name_page .name_page__name {
+    position: relative;
+    font-size: 50rem;
+    margin: -7rem 7.2rem;
+    left: 0;
+    width: 400rem; }
 
 /*# sourceMappingURL=styles_new.css.map */
