@@ -74,28 +74,18 @@ html {
   background-color: $off-black;
   z-index: 10;
 }
-.mouse-circle {
-  pointer-events: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 3rem;
-  height: 3rem;
-  border: 0.25rem solid $off-black;
-  border-radius: 100%;
-  z-index: 10;
-  @include transform-origin(center, center);
-  @include transform(translate3d(0, 0, 0));
+
+.logo-animate {
+  width: 10rem;
 }
 
 .parallax {
   position: fixed;
   top: 0; right: 0; bottom: 0; left: 0;
   z-index: -10;
-
-  @include grow-animate;
 }
 
-.background-image {
+.parallax__image {
   position: absolute;
   left: 0;
   right: 0;
@@ -107,23 +97,45 @@ html {
   @include transform(translate3d(0, 0, 0));
   @include transition-duration(1ms);
 }
-$circle-width: 15rem;
-.slice1 { width: $circle-width * 1.3; }
-.slice2 { width: $circle-width * 0.9; }
-.slice3 { width: $circle-width * 1.7; }
-.slice4 { width: $circle-width * 1.4; }
-.slice5 { width: $circle-width * 2.3; }
-.slice6 { width: $circle-width * 0.6; }
-.slice7 { width: $circle-width * 2.6; }
-.slice8 { width: $circle-width * 2.7; }
-.slice9 { width: $circle-width * 2.3; }
-.slice10 { width: $circle-width * 0.4; }
-.slice11 { width: $circle-width * 1.0; }
-.slice12 { width: $circle-width * 1.0; }
-.slice13 { width: $circle-width * 1.7; }
-.slice14 { width: $circle-width; }
-.slice15 { width: $circle-width * 1.9; }
-.slice16 { width: $circle-width * 1; }
+$circle-width: 14rem;
+.parallax__element--slice1 { width: $circle-width * 1.3; }
+.parallax__element--slice2 { width: $circle-width * 0.9; }
+.parallax__element--slice3 { width: $circle-width * 1.7; }
+.parallax__element--slice4 { width: $circle-width * 1.4; }
+.parallax__element--slice5 { width: $circle-width * 2.3; }
+.parallax__element--slice6 { width: $circle-width * 0.6; }
+.parallax__element--slice7 { width: $circle-width * 2.6; }
+.parallax__element--slice8 { width: $circle-width * 2.7; }
+.parallax__element--slice9 { width: $circle-width * 2.3; }
+.parallax__element--slice10 { width: $circle-width * 0.4; }
+.parallax__element--slice11 { width: $circle-width * 1.0; }
+.parallax__element--slice12 { width: $circle-width * 1.0; }
+.parallax__element--slice13 { width: $circle-width * 1.7; }
+.parallax__element--slice14 { width: $circle-width; }
+.parallax__element--slice15 { width: $circle-width * 1.9; }
+.parallax__element--slice16 { width: $circle-width * 1; }
+
+.loading {
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+}
+.loading__element {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+.loading__logo {
+  width: $circle-width * 0.4;
+}
+.loading__bg {
+  width: 150vw;
+  height: 150vw;
+  background-color: #4173FD;
+  border-radius: 0;
+}
 
 .grid-container {
   position: fixed;
@@ -147,13 +159,13 @@ $circle-width: 15rem;
   }
 }
 
-nav {
-  ul {
+.nav {
+  .links {
     list-style-type: none;
     margin: 0;
     padding: 0;
 
-    li {
+    .links__element {
       color: $off-black;
       padding-left: 2rem;
       font-weight: bold;
@@ -168,19 +180,25 @@ nav {
       }
     }
   }
-  .navigation-links {
-  }
-  .socials-links {
-    margin-top: 0.67rem;
+  .nav__element--logo {
+    margin-top: auto;
+    margin-bottom: 3rem;
+
+    img {
+      width: 3.25rem;
+    }
   }
 }
-.logo-nav {
-  margin-top: auto;
-  margin-bottom: 3rem;
 
-  img {
-    width: 3.25rem;
+.barba-grid-content {
+  height: 100vh;
+  overflow-y: scroll;
+  scrollbar-base-color: transparent;
+  &::-webkit-scrollbar {
+    display: none;
   }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .project-view {
@@ -190,8 +208,6 @@ nav {
   align-content: flex-start;
   padding-top: 2rem;
   padding-bottom: 2rem;
-  height: 100vh;
-  overflow-y: scroll;
 
   .project-element {
     background-color: lightgray;
@@ -204,7 +220,53 @@ nav {
   }
   .project-end {
     width: 100%;
-    height: 6rem;
+    height: 0.4rem;
     order: 4;
+  }
+}
+
+.about-text {
+  padding-top: 20rem;
+  width: 40rem;
+  font-size: x-large;
+  line-height: 160%;
+}
+
+.contact-form {
+  padding-top: 10rem;
+  font-size: x-large;
+  width: 30rem;
+  input {
+    font-family: 'Manrope', sans-serif;
+    font-size: large;
+    width: 30rem;
+    background-color: #eaeaea;
+    border: none;
+    border-radius: 1rem;
+    padding: 0.3rem 1rem;
+    margin-bottom: 1.5rem;
+  }
+  textarea {
+    font-family: 'Manrope', sans-serif;
+    font-size: large;
+    width: 30rem;
+    height: 13rem;
+    background-color: #eaeaea;
+    border: none;
+    border-radius: 1rem;
+    padding: 0.3rem 1rem;
+    resize: none;
+  }
+  button {
+    font-family: 'Manrope', sans-serif;
+    font-size: x-large;
+    font-weight: bold;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    margin-right: -2.5rem;
+    margin-bottom: 3rem;
+    float: right;
   }
 }

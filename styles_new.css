@@ -70,23 +70,8 @@ html {
   background-color: #191919;
   z-index: 10; }
 
-.mouse-circle {
-  pointer-events: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 3rem;
-  height: 3rem;
-  border: 0.25rem solid #191919;
-  border-radius: 100%;
-  z-index: 10;
-  -webkit-transform-origin: center center;
-  -ms-transform-origin: center center;
-  -o-transform-origin: center center;
-  transform-origin: center center;
-  -webkit-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0); }
+.logo-animate {
+  width: 10rem; }
 
 .parallax {
   position: fixed;
@@ -94,11 +79,9 @@ html {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: -10;
-  -webkit-animation: grow 1s 1;
-  animation: grow 1s 1; }
+  z-index: -10; }
 
-.background-image {
+.parallax__image {
   position: absolute;
   left: 0;
   right: 0;
@@ -116,53 +99,77 @@ html {
   -o-transition-duration: 1ms;
   transition-duration: 1ms; }
 
-.slice1 {
-  width: 19.5rem; }
+.parallax__element--slice1 {
+  width: 18.2rem; }
 
-.slice2 {
-  width: 13.5rem; }
+.parallax__element--slice2 {
+  width: 12.6rem; }
 
-.slice3 {
-  width: 25.5rem; }
+.parallax__element--slice3 {
+  width: 23.8rem; }
 
-.slice4 {
-  width: 21rem; }
+.parallax__element--slice4 {
+  width: 19.6rem; }
 
-.slice5 {
-  width: 34.5rem; }
+.parallax__element--slice5 {
+  width: 32.2rem; }
 
-.slice6 {
-  width: 9rem; }
+.parallax__element--slice6 {
+  width: 8.4rem; }
 
-.slice7 {
-  width: 39rem; }
+.parallax__element--slice7 {
+  width: 36.4rem; }
 
-.slice8 {
-  width: 40.5rem; }
+.parallax__element--slice8 {
+  width: 37.8rem; }
 
-.slice9 {
-  width: 34.5rem; }
+.parallax__element--slice9 {
+  width: 32.2rem; }
 
-.slice10 {
-  width: 6rem; }
+.parallax__element--slice10 {
+  width: 5.6rem; }
 
-.slice11 {
-  width: 15rem; }
+.parallax__element--slice11 {
+  width: 14rem; }
 
-.slice12 {
-  width: 15rem; }
+.parallax__element--slice12 {
+  width: 14rem; }
 
-.slice13 {
-  width: 25.5rem; }
+.parallax__element--slice13 {
+  width: 23.8rem; }
 
-.slice14 {
-  width: 15rem; }
+.parallax__element--slice14 {
+  width: 14rem; }
 
-.slice15 {
-  width: 28.5rem; }
+.parallax__element--slice15 {
+  width: 26.6rem; }
 
-.slice16 {
-  width: 15rem; }
+.parallax__element--slice16 {
+  width: 14rem; }
+
+.loading {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; }
+
+.loading__element {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto; }
+
+.loading__logo {
+  width: 5.6rem; }
+
+.loading__bg {
+  width: 150vw;
+  height: 150vw;
+  background-color: #4173FD;
+  border-radius: 0; }
 
 .grid-container {
   position: fixed;
@@ -184,28 +191,34 @@ html {
     grid-column: 3 / span 9;
     grid-row: 1 / span 1; }
 
-nav ul {
+.nav .links {
   list-style-type: none;
   margin: 0;
   padding: 0; }
-  nav ul li {
+  .nav .links .links__element {
     color: #191919;
     padding-left: 2rem;
     font-weight: bold; }
-    nav ul li a {
+    .nav .links .links__element a {
       text-decoration: none;
       color: #191919;
       margin-left: -2rem; }
-      nav ul li a:hover {
+      .nav .links .links__element a:hover {
         padding-left: 2rem; }
-nav .socials-links {
-  margin-top: 0.67rem; }
-
-.logo-nav {
+.nav .nav__element--logo {
   margin-top: auto;
   margin-bottom: 3rem; }
-  .logo-nav img {
+  .nav .nav__element--logo img {
     width: 3.25rem; }
+
+.barba-grid-content {
+  height: 100vh;
+  overflow-y: scroll;
+  scrollbar-base-color: transparent;
+  -ms-overflow-style: none;
+  scrollbar-width: none; }
+  .barba-grid-content::-webkit-scrollbar {
+    display: none; }
 
 .project-view {
   display: flex;
@@ -213,9 +226,7 @@ nav .socials-links {
   justify-content: space-between;
   align-content: flex-start;
   padding-top: 2rem;
-  padding-bottom: 2rem;
-  height: 100vh;
-  overflow-y: scroll; }
+  padding-bottom: 2rem; }
   .project-view .project-element {
     background-color: lightgray;
     border-radius: 1rem;
@@ -226,7 +237,48 @@ nav .socials-links {
     transition: all 0.2s ease-in-out; }
   .project-view .project-end {
     width: 100%;
-    height: 6rem;
+    height: 0.4rem;
     order: 4; }
+
+.about-text {
+  padding-top: 20rem;
+  width: 40rem;
+  font-size: x-large;
+  line-height: 160%; }
+
+.contact-form {
+  padding-top: 10rem;
+  font-size: x-large;
+  width: 30rem; }
+  .contact-form input {
+    font-family: 'Manrope', sans-serif;
+    font-size: large;
+    width: 30rem;
+    background-color: #eaeaea;
+    border: none;
+    border-radius: 1rem;
+    padding: 0.3rem 1rem;
+    margin-bottom: 1.5rem; }
+  .contact-form textarea {
+    font-family: 'Manrope', sans-serif;
+    font-size: large;
+    width: 30rem;
+    height: 13rem;
+    background-color: #eaeaea;
+    border: none;
+    border-radius: 1rem;
+    padding: 0.3rem 1rem;
+    resize: none; }
+  .contact-form button {
+    font-family: 'Manrope', sans-serif;
+    font-size: x-large;
+    font-weight: bold;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    margin-right: -2.5rem;
+    margin-bottom: 3rem;
+    float: right; }
 
 /*# sourceMappingURL=styles_new.css.map */

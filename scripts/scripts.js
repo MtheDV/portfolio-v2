@@ -5,7 +5,7 @@
 ///////////////////////////////////////
 ////////////// Parallax ///////////////
 ///////////////////////////////////////
-let parallaxElements = document.getElementsByClassName("parallax_element");
+let parallaxElements = document.getElementsByClassName("parallax__element");
 
 function parallaxCalculate(height, width, mouseY, mouseX, speedX, speedY, xOffset, yOffset) {
     return [((((height - mouseY) / height * 100) - 50) * speedY) + yOffset,
@@ -33,13 +33,17 @@ function parallax(e) {
 
             parallaxElements[i].style["-webkit-transform"] = "translate3d("+ (parallaxCalc[1]) + "vw," + (parallaxCalc[0]) + "vh, 0)";
             parallaxElements[i].style["-ms-transform"] = "translate3d("+ (parallaxCalc[1]) + "vw," + (parallaxCalc[0]) + "vh, 0)";
-            parallaxElements[i].style.transform = "translate3d("+ (parallaxCalc[1]) + "vw," + (parallaxCalc[0]) + "vh, 0)";// rotate3d(0, 1, 0, " + parallaxCalc[1] * 1.15 + "deg)";
+            parallaxElements[i].style.transform = "translate3d("+ (parallaxCalc[1]) + "vw," + (parallaxCalc[0]) + "vh, 0)";
             parallaxElements[i].style.zIndex = (parallaxElements.length - i).toString();
             parallaxElements[i].style["-webkit-filter"] = "drop-shadow(0 0.25rem " + ((parallaxElements.length - i) / 8) + "rem rgba(0, 0, 0, 0.2))";
             parallaxElements[i].style.filter = "drop-shadow(0 0.25rem " + ((parallaxElements.length - i) / 8) + "rem rgba(0, 0, 0, 0.2))";
         }
     }
 }
+window.addEventListener("mousemove", (e) => {
+    parallax(e);
+});
+window.dispatchEvent(new Event("mousemove"));
 ///////////////////////////////////////
 /////////////// Jiggle ////////////////
 ///////////////////////////////////////
@@ -76,24 +80,6 @@ function parallax(e) {
 // for (let i = 0; i < parallaxElements.length; i++) {
 //     moveDynamicObject(parallaxElements[i]);
 // }
-
-///////////////////////////////////////
-/////////// MOUSE POINTER /////////////
-///////////////////////////////////////
-let mouseObject = document.querySelector(".mouse-circle");
-function newMousePosition(e) {
-    let mouseX = e.clientX;
-    let mouseY = e.clientY;
-    let width = Number(mouseObject.offsetWidth) / 2;
-    mouseObject.style["-webkit-transform"] = "translate3d("+ (mouseX - width) + "px," + (mouseY - width) + "px, 0)";
-    mouseObject.style["-ms-transform"] = "translate3d("+ (mouseX - width) + "px," + (mouseY - width) + "px, 0)";
-    mouseObject.style.transform = "translate3d("+ (mouseX - width) + "px," + (mouseY - width) + "px, 0)";
-}
-window.addEventListener("mousemove", (e) => {
-    newMousePosition(e);
-    parallax(e);
-});
-window.dispatchEvent(new Event("mousemove"));
 ///////////////////////////////////////
 /////////// PROJECTS PAGE /////////////
 ///////////////////////////////////////
