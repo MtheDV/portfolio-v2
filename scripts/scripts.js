@@ -1,104 +1,196 @@
 /* scripts for use in website
  * created by mathew de vin
  */
+let pageScroll = 0;
 
-///////////////////////////////////////
-////////////// Parallax ///////////////
-///////////////////////////////////////
-let parallaxElements = document.getElementsByClassName("parallax__element");
-
-function parallaxCalculate(height, width, mouseY, mouseX, speedX, speedY, xOffset, yOffset) {
-    return [((((height - mouseY) / height * 100) - 50) * speedY) + yOffset,
-            ((((width - mouseX) / width * 100) - 50) * speedX) + xOffset];
-}
-
-function parallax(e) {
-    let width = window.innerWidth;
-    let height = window.innerHeight;
-    let mouseX = e.clientX;
-    let mouseY = e.clientY;
-
-    if (mouseX == null && mouseY == null) {
-        mouseX = width/2;
-        mouseY = height/2;
-    }
-
-    if (width >= 450) {
-        for (let i = 0; i < parallaxElements.length; ++i) {
-            let idManipulates = parallaxElements[i].id;
-            idManipulates = idManipulates.split("_");
-            let parallaxCalc = parallaxCalculate(height, width, mouseY, mouseX,
-                                                Number(idManipulates[0]), Number(idManipulates[1]), 
-                                                Number(idManipulates[2]), Number(idManipulates[3]));
-
-            parallaxElements[i].style["-webkit-transform"] = "translate3d("+ (parallaxCalc[1]) + "vw," + (parallaxCalc[0]) + "vh, 0)";
-            parallaxElements[i].style["-ms-transform"] = "translate3d("+ (parallaxCalc[1]) + "vw," + (parallaxCalc[0]) + "vh, 0)";
-            parallaxElements[i].style.transform = "translate3d("+ (parallaxCalc[1]) + "vw," + (parallaxCalc[0]) + "vh, 0)";// scale(" + parallaxElements[i].style.scale + ")";
-            parallaxElements[i].style.zIndex = (parallaxElements.length - i).toString();
-            parallaxElements[i].style["-webkit-filter"] = "drop-shadow(0 0.25rem " + ((parallaxElements.length - i) / 8) + "rem rgba(0, 0, 0, 0.2))";
-            parallaxElements[i].style.filter = "drop-shadow(0 0.25rem " + ((parallaxElements.length - i) / 8) + "rem rgba(0, 0, 0, 0.2))";
+// BARBA //
+barba.init({
+    transitions: [{
+        name: 'opacity-transition',
+        leave(data) {
+            if (data.current.namespace === "home")
+                pageScroll = window.scrollY;
+            return gsap.to(data.current.container, {
+                opacity: 0
+            });
+        },
+        beforeEnter(data) {
+            console.log(data.next.namespace);
+            console.log(pageScroll);
+            if (data.next.namespace === "projects") {
+                window.scrollTo(0, 0);
+            } else if (data.next.namespace === "home") {
+                //gsap.to(window, {duration: 0.25, scrollTo: pageScroll});
+                window.scrollTo(0, pageScroll);
+                //document.documentElement.scrollTop = pageScroll;
+            }
+        },
+        enter(data) {
+            return gsap.from(data.next.container, {
+                opacity: 0
+            });
         }
-    }
-}
-window.addEventListener("mousemove", (e) => {
-    parallax(e);
+    }]
 });
-window.dispatchEvent(new Event("mousemove"));
-///////////////////////////////////////
-/////////////// Jiggle ////////////////
-///////////////////////////////////////
-// let randomTimeMax = 5; // in seconds
-// let randomTimeMin = 3; // in seconds
-// let randomMoveMax = 30; // in %
-// let randomMoveMin = -30; // in %
-// const moveDynamicObject = (dynamicObject) => {
-//     let newPosX; let newPosY;
-//     // set random new position
-//     if (dynamicObject.getBoundingClientRect().left + dynamicObject.getBoundingClientRect().width / 2 < window.innerWidth / 2)
-//         newPosX = Math.random() * (randomMoveMax - randomMoveMin / 4) + randomMoveMin / 4;
-//     else
-//         newPosX = Math.random() * (randomMoveMax / 4 - randomMoveMin) + randomMoveMin;
-//     if (dynamicObject.getBoundingClientRect().top + dynamicObject.getBoundingClientRect().height / 2 < window.innerHeight / 2)
-//         newPosY = Math.random() * (randomMoveMax - randomMoveMin / 4) + randomMoveMin / 4;
-//     else
-//         newPosY = Math.random() * (randomMoveMax / 4 - randomMoveMin) + randomMoveMin;
-//
-//     // set random time
-//     let randTime = Math.random() * (randomTimeMax - randomTimeMin) + randomTimeMin;
-//
-//     // update position
-//     dynamicObject.style.transition = "transform " + randTime + "s ease-in-out";
-//     dynamicObject.style["-webkit-transform"] = "translate3d(" + newPosX + "%, " + newPosY + "%, 0)";
-//     dynamicObject.style["-ms-transform"] = "translate3d(" + newPosX + "%, " + newPosY + "%, 0)";
-//     dynamicObject.style.transform =  "translate3d(" + newPosX + "%, " + newPosY + "%, 0)";
-//
-//     // timeout with random time between X and X seconds
-//     setTimeout(moveDynamicObject.bind(null, dynamicObject), randTime * 1000);
-// }
-//
-// apply method to each element
-// for (let i = 0; i < parallaxElements.length; i++) {
-//     moveDynamicObject(parallaxElements[i]);
-// }
-///////////////////////////////////////
-/////////// PROJECTS PAGE /////////////
-///////////////////////////////////////
-let projectElements = document.getElementsByClassName("project-element");
-let projectView = document.querySelector(".project-view");
-function focusProject(e) {
-    if (e.target.className === "project-element") {
-        for (let i = 0; i < projectElements.length; ++i) {
-            projectElements[i].style.order = "2";
-            projectElements[i].style.width  = "17.5rem";
-            projectElements[i].style.height = "17.5rem";
+
+barba.hooks.afterEnter(() => {
+    ///////////////////////////////////////
+    //////////////// GSAP /////////////////
+    ///////////////////////////////////////
+    gsap.registerPlugin(ScrollTrigger);
+
+    let timelineMain = new TimelineMax({paused: true});
+
+    ScrollTrigger.defaults({
+        toggleActions: "restart none none reverse",
+        markers: false
+    });
+
+    let t1 = new TimelineMax();
+
+    t1.to(".loading__bg", {
+        width: "14rem",
+        height: "14rem",
+        borderRadius: "50%",
+        duration: 1
+    });
+
+    gsap.to(".parallax__element--circular-text-small", {
+        rotation: 360,
+        repeat: -1,
+        duration: 20,
+        ease: "none"
+    })
+    gsap.to(".parallax__element--circular-text-large", {
+        rotation: -360,
+        repeat: -1,
+        duration: 25,
+        ease: "none"
+    })
+
+    let t2 = new TimelineMax({
+        scrollTrigger: {
+            trigger: ".loading__logo",
+            start: "center center",
+            end: "center top-=800",
+            id: "name--scroll",
+            pin: true,
+            scrub: true
         }
-        e.target.style.order = "1";
-        e.target.style.width = "100%";
-        e.target.style.height = "36.25rem";
-        projectView.scrollTop = 0;
+    });
+
+    t2.to(".loading__logo", {
+        opacity: 0,
+        duration: 2
+    }).to(".nav__element--name", {
+        opacity: 1,
+        duration: 0.75
+    }).to(".links__element--about-img", {
+        scale: 1,
+        duration: 0.25
+    });
+
+    let t3 = new TimelineMax({
+        scrollTrigger: {
+            trigger: ".about__element",
+            start: "center bottom",
+            end: "center top+=100",
+            scrub: true,
+            id: "about--logos"
+        }
+    });
+
+    t3.to(".logo__element", {
+        opacity: 1,
+        stagger: 1
+    });
+
+    let t4 = new TimelineMax({
+        scrollTrigger: {
+            trigger: ".projects",
+            start: "top+=300 bottom",
+            end: "top+=300 bottom"
+        }
+    });
+
+    t4.to(".links__element--about-img", {
+        y: "+=2rem",
+        duration: 0.5
+    });
+
+    let t5 = new TimelineMax({
+        // scrollTrigger: {
+        //     trigger: ".project__slides",
+        //     pin: true,
+        //     scrub: 1,
+        //     end: () => `+=${document.querySelector(".project__slides").offsetWidth}`
+        // }
+    });
+
+    t5.to(".project__slides", {
+        ease: "none"
+    });
+
+    window.onload = () => {
+        timelineMain.play();
     }
-}
-window.addEventListener("click", focusProject);
+
+    ///////////////////////////////////////
+    ////////////// Parallax ///////////////
+    ///////////////////////////////////////
+    let parallaxElements = document.getElementsByClassName("parallax__element");
+
+    function parallaxCalculate(height, width, mouseY, mouseX, speedX, speedY, xOffset, yOffset) {
+        return [((((height - mouseY) / height * 100) - 50) * speedY) + yOffset,
+            ((((width - mouseX) / width * 100) - 50) * speedX) + xOffset];
+    }
+
+    function parallax(e) {
+        let width = window.innerWidth;
+        let height = window.innerHeight;
+        let mouseX = e.clientX;
+        let mouseY = e.clientY;
+
+        if (mouseX == null && mouseY == null) {
+            mouseX = width/2;
+            mouseY = height/2;
+        }
+
+        if (width >= 450) {
+            for (let i = 0; i < parallaxElements.length; ++i) {
+                let idManipulates = parallaxElements[i].id;
+                idManipulates = idManipulates.split("_");
+                let parallaxCalc = parallaxCalculate(height, width, mouseY, mouseX,
+                  Number(idManipulates[0]), Number(idManipulates[1]),
+                  Number(idManipulates[2]), Number(idManipulates[3]));
+
+                parallaxElements[i].style["-webkit-transform"] = "translate3d("+ (parallaxCalc[1]) + "vw," + (parallaxCalc[0]) + "vh, 0)";
+                parallaxElements[i].style["-ms-transform"] = "translate3d("+ (parallaxCalc[1]) + "vw," + (parallaxCalc[0]) + "vh, 0)";
+                parallaxElements[i].style.transform = "translate3d("+ (parallaxCalc[1]) + "vw," + (parallaxCalc[0]) + "vh, 0)";// scale(" + parallaxElements[i].style.scale + ")";
+                parallaxElements[i].style.zIndex = (parallaxElements.length - i).toString();
+                parallaxElements[i].style["-webkit-filter"] = "drop-shadow(0 0.25rem " + ((parallaxElements.length - i) / 8) + "rem rgba(0, 0, 0, 0.2))";
+                parallaxElements[i].style.filter = "drop-shadow(0 0.25rem " + ((parallaxElements.length - i) / 8) + "rem rgba(0, 0, 0, 0.2))";
+            }
+        }
+    }
+    window.addEventListener("mousemove", (e) => {
+        parallax(e);
+    });
+    window.dispatchEvent(new Event("mousemove"));
+
+    ///////////////////////////////////////
+    /////////// PROJECTS PAGE /////////////
+    ///////////////////////////////////////
+    let backButton = document.getElementById("back-link");
+    backButton.setAttribute("href", document.referrer);
+    backButton.onclick = () => {
+        history.back();
+        // if (history.back() === undefined)
+        //     window.location = "../index.html"
+        return false;
+    }
+});
+
 
 /*
 ////////// HEADER BUTTONS /////////////

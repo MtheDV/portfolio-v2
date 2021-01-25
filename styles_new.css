@@ -55,8 +55,9 @@
     transform: scale(1); } }
 html {
   font-family: 'Manrope', sans-serif;
-  font-size: 1vw;
-  scroll-behavior: smooth; }
+  font-size: calc(0.5rem + (1rem - 0.5rem) * ((100vw - 300px) / (1600 - 300)));
+  scroll-behavior: smooth;
+  overflow-x: hidden; }
 
 body {
   margin: 0;
@@ -69,7 +70,7 @@ body {
   left: 0;
   bottom: 0;
   display: grid;
-  grid-template-columns: 1fr [grid-s] repeat(12, 5rem) [grid-e] 1fr;
+  grid-template-columns: 1fr [grid-s] repeat(12, minmax(2rem, 5rem)) [grid-e] 1fr;
   grid-template-rows: 100vh repeat(4, auto);
   grid-column-gap: 1.25rem;
   justify-content: center; }
@@ -208,11 +209,12 @@ body {
   justify-content: space-between; }
   .nav .nav__element--name {
     position: absolute;
-    left: 0;
     font-size: 10rem;
     width: 100vw;
-    margin: -3.5rem -13rem;
+    margin: -3.5rem -1rem;
     opacity: 0;
+    pointer-events: none;
+    white-space: nowrap;
     -webkit-filter: drop-shadow(0 0.25rem 0.5rem rgba(0, 0, 0, 0.2));
     filter: drop-shadow(0 0.25rem 0.5rem rgba(0, 0, 0, 0.2)); }
   .nav .links {
@@ -268,6 +270,55 @@ body {
       position: relative;
       width: 25rem;
       z-index: inherit3; }
+
+.project {
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: grid;
+  grid-template-columns: 1fr [grid-s] repeat(12, 5rem) [grid-e] 1fr;
+  grid-template-rows: auto auto;
+  grid-gap: 1.25rem;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh; }
+  .project .project__back {
+    grid-column: grid-s / span 1;
+    grid-row: 1 / 1;
+    width: 3rem;
+    height: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 4rem; }
+  .project .project__slides {
+    grid-row: 2 / 2;
+    display: flex;
+    flex-wrap: wrap; }
+  .project .project__slides--left {
+    grid-column: grid-s / 8; }
+  .project .project__slides--right {
+    grid-column: 8 / grid-e; }
+  .project .project__slides {
+    margin-bottom: 1.25rem; }
+  .project .project__slides--image {
+    width: 100%;
+    -webkit-filter: drop-shadow(0 1rem 1rem rgba(0, 0, 0, 0.2));
+    filter: drop-shadow(0 1rem 1rem rgba(0, 0, 0, 0.2)); }
+  .project .project__slides--info {
+    flex-shrink: 0;
+    width: 100%;
+    background-color: #191919;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column; }
+  .project .project__slides--info-title {
+    color: white;
+    font-size: 3.5rem;
+    margin: 5rem 4.5rem 1rem; }
+  .project .project__slides--info-text {
+    color: white;
+    font-size: 2rem;
+    padding: 0 4.5rem; }
 
 .final {
   width: 100vw;
