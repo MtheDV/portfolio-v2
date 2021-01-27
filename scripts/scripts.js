@@ -68,23 +68,41 @@ barba.hooks.afterEnter(() => {
         ease: "none"
     })
 
+    let tIntro = new TimelineMax({
+        scrollTrigger: {
+            trigger: ".intro__content",
+            start: "center center",
+            end: "center top-=500",
+            id: "intro--scroll",
+            scrub: true,
+            pin: true
+        }
+    });
+
+    tIntro.to(".intro__element--hide", {
+        opacity: 0,
+        delay: 2
+    }).to(".intro__element--name", {
+        opacity: 0,
+        delay: 2
+    });
+
     let t2 = new TimelineMax({
         scrollTrigger: {
-            trigger: ".loading__logo",
+            trigger: ".nav__element--name",
             start: "center center",
-            end: "center top-=800",
+            end: "center center-=200",
             id: "name--scroll",
-            pin: true,
             scrub: true
         }
     });
 
-    t2.to(".loading__logo", {
-        opacity: 0,
-        duration: 2
-    }).to(".nav__element--name", {
+    t2.to(".nav__element--name", {
         opacity: 1,
         duration: 0.75
+    }).to(".links__element", {
+        opacity: 1,
+        stagger: 1
     }).to(".links__element--about-img", {
         scale: 1,
         duration: 0.25
@@ -119,15 +137,16 @@ barba.hooks.afterEnter(() => {
     });
 
     let t5 = new TimelineMax({
-        // scrollTrigger: {
-        //     trigger: ".project__slides",
-        //     pin: true,
-        //     scrub: 1,
-        //     end: () => `+=${document.querySelector(".project__slides").offsetWidth}`
-        // }
+        scrollTrigger: {
+            trigger: ".project__large_title",
+            start: "top bottom",
+            end: "center top",
+            scrub: 1
+        }
     });
 
-    t5.to(".project__slides", {
+    t5.to(".project__large_title", {
+        y: "-=1000",
         ease: "none"
     });
 
@@ -168,8 +187,8 @@ barba.hooks.afterEnter(() => {
                 parallaxElements[i].style["-ms-transform"] = "translate3d("+ (parallaxCalc[1]) + "vw," + (parallaxCalc[0]) + "vh, 0)";
                 parallaxElements[i].style.transform = "translate3d("+ (parallaxCalc[1]) + "vw," + (parallaxCalc[0]) + "vh, 0)";// scale(" + parallaxElements[i].style.scale + ")";
                 parallaxElements[i].style.zIndex = (parallaxElements.length - i).toString();
-                parallaxElements[i].style["-webkit-filter"] = "drop-shadow(0 0.25rem " + ((parallaxElements.length - i) / 8) + "rem rgba(0, 0, 0, 0.2))";
-                parallaxElements[i].style.filter = "drop-shadow(0 0.25rem " + ((parallaxElements.length - i) / 8) + "rem rgba(0, 0, 0, 0.2))";
+                // parallaxElements[i].style["-webkit-filter"] = "drop-shadow(0 0.25rem " + ((parallaxElements.length - i) / 8) + "rem rgba(0, 0, 0, 0.2))";
+                // parallaxElements[i].style.filter = "drop-shadow(0 0.25rem " + ((parallaxElements.length - i) / 8) + "rem rgba(0, 0, 0, 0.2))";
             }
         }
     }
