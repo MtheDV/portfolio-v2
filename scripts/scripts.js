@@ -46,9 +46,8 @@ barba.hooks.afterEnter(() => {
         markers: false
     });
 
-    let t1 = new TimelineMax();
-
-    t1.to(".loading__bg", {
+    let t1 = new TimelineMax()
+      .to(".loading__bg", {
         width: "14rem",
         height: "14rem",
         borderRadius: "50%",
@@ -73,13 +72,10 @@ barba.hooks.afterEnter(() => {
             trigger: ".intro__content",
             start: "center center",
             end: "center top-=500",
-            id: "intro--scroll",
             scrub: true,
             pin: true
         }
-    });
-
-    tIntro.to(".intro__element--hide", {
+    }).to(".intro__element--hide", {
         opacity: 0,
         delay: 2
     }).to(".intro__element--name", {
@@ -92,12 +88,9 @@ barba.hooks.afterEnter(() => {
             trigger: ".nav__element--name",
             start: "center center",
             end: "center center-=200",
-            id: "name--scroll",
             scrub: true
         }
-    });
-
-    t2.to(".nav__element--name", {
+    }).to(".nav__element--name", {
         opacity: 1,
         duration: 0.75
     }).to(".links__element", {
@@ -108,32 +101,90 @@ barba.hooks.afterEnter(() => {
         duration: 0.25
     });
 
+    let tAbout = new TimelineMax({
+        repeat: -1,
+        repeatDelay: 0.25,
+        ease: "none",
+    }).to(".img-1", {
+        display: "block"
+    }).to(".img-1", {
+        display: "none"
+    }).to(".img-2", {
+        display: "block"
+    }).to(".img-2", {
+        display: "none"
+    }).to(".img-3", {
+        display: "block"
+    }).to(".img-3", {
+        display: "none"
+    }).to(".img-4", {
+        display: "block"
+    });
+
     let t3 = new TimelineMax({
         scrollTrigger: {
             trigger: ".about__element",
             start: "center bottom",
             end: "center top+=100",
-            scrub: true,
-            id: "about--logos"
+            scrub: true
         }
-    });
-
-    t3.to(".logo__element", {
+    }).to(".logo__element", {
         opacity: 1,
         stagger: 1
     });
 
     let t4 = new TimelineMax({
         scrollTrigger: {
-            trigger: ".projects",
+            trigger: ".about",
             start: "top+=300 bottom",
-            end: "top+=300 bottom"
+            end: `top+=300 bottom-=${document.querySelector(".projects").offsetHeight + document.querySelector(".about").offsetHeight} + 500`,
+            scrub: true,
+            markers: true
         }
+    }).to(".links__element--about-img", {
+        y: "+=2rem",
+        duration: 15
+    }).to(".links__element--about-img", {
+        y: "+=2rem",
+        marginLeft: "+=0.5rem",
+        duration: 30
     });
 
-    t4.to(".links__element--about-img", {
-        y: "+=2rem",
-        duration: 0.5
+    let tProjects = new TimelineMax({
+        scrollTrigger: {
+            trigger: ".projects__element--titles",
+            start: "center center",
+            end: `center bottom-=${document.querySelector(".projects").offsetHeight - 550}`,// + document.querySelector(".footer").offsetHeight}`,
+            scrub: true,
+            pin: true
+        }
+    }).to(".projects__element--title", {
+        delay: 2,
+        text: "rock paper scissors___",
+        padSpace: true,
+        ease: "none"
+    }).to(".projects__element--title", {
+        delay: 2,
+        text: "ecommerce website___",
+        padSpace: true,
+        ease: "none"
+    }).to(".projects__element--title", {
+        delay: 2,
+        text: "exodus___",
+        padSpace: true,
+        ease: "none"
+    }).to(".projects__element--title", {
+        delay: 2,
+        text: "logo collection___",
+        padSpace: true,
+        ease: "none"
+    });
+
+    gsap.to(".projects__element--title", {
+        xPercent: "-=100",
+        duration: 10,
+        repeat: -1,
+        ease: "none"
     });
 
     let t5 = new TimelineMax({
@@ -143,12 +194,12 @@ barba.hooks.afterEnter(() => {
             end: "center top",
             scrub: 1
         }
-    });
-
-    t5.to(".project__large_title", {
+    }).to(".project__large_title", {
         y: "-=1000",
         ease: "none"
     });
+
+    timelineMain.add(t1, t2, t3, t4, t5, tProjects, tIntro, tAbout);
 
     window.onload = () => {
         timelineMain.play();
