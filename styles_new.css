@@ -239,6 +239,8 @@ body {
       text-decoration: none;
       color: #191919;
       opacity: 0; }
+    .nav .links .links__element--link:hover {
+      color: #4173FD; }
     .nav .links .links__element--about-img {
       position: absolute;
       top: 7rem;
@@ -295,22 +297,24 @@ body {
   .projects .projects__element--title {
     font-size: 8rem;
     white-space: nowrap;
-    pointer-events: none;
     margin: 0;
     padding: 0 0 4rem 0;
     width: 100%; }
   .projects .projects__element--group {
-    margin: 8rem 0; }
+    margin: 8rem 0;
+    perspective: 400px; }
+  .projects .projects__element--image {
+    transition: all 0.1s linear; }
   .projects #construct {
-    height: 25rem; }
+    width: 37rem; }
   .projects #rps {
-    height: 23rem; }
+    width: 52rem; }
   .projects #ecommerce {
-    height: 25rem; }
+    width: 43rem; }
   .projects #exodus {
-    height: 25rem; }
+    width: 39rem; }
   .projects #logos {
-    height: 16rem; }
+    width: 33rem; }
 
 .project {
   top: 0;
@@ -387,6 +391,8 @@ body {
     font-weight: bolder;
     text-decoration: none;
     color: white; }
+    .footer .footer__element--link:hover {
+      color: #4173FD; }
   .footer .footer__element--circle-link {
     margin-right: 2rem; }
   .footer .footer__element--image-circle {
@@ -395,7 +401,7 @@ body {
     margin: -1.5rem 0 0 -2.1rem;
     pointer-events: none; }
 
-@media (max-width: 480px) {
+@media (max-width: 1250px) {
   .parallax__element {
     display: none; }
 
@@ -403,11 +409,12 @@ body {
     display: inline-block; }
 
   .parallax__element--circular-text-large {
-    width: 100%; }
+    width: 130%;
+    left: -15%; }
 
   .parallax__element--circular-text-small {
-    width: 30%; }
-
+    width: 60%; } }
+@media (max-width: 800px) {
   .grid-container {
     grid-template-columns: repeat(2, 1fr) auto;
     margin: 0 1rem; }
@@ -437,12 +444,24 @@ body {
   .nav .links {
     margin-top: 2rem; }
     .nav .links .links__element--about-img {
-      top: 0; }
+      top: 1rem; }
 
-  .projects .project__element {
-    margin-bottom: 2rem; }
-    .projects .project__element .project__element__image {
-      width: 100%; }
+  .projects .projects__element--titles {
+    top: 20rem; }
+  .projects .projects__element--title {
+    font-size: 5rem; }
+  .projects .projects__element--image {
+    width: 100%; }
+  .projects #construct {
+    width: 100%; }
+  .projects #rps {
+    width: 100%; }
+  .projects #ecommerce {
+    width: 100%; }
+  .projects #exodus {
+    width: 100%; }
+  .projects #logos {
+    width: 100%; }
 
   .project {
     grid-template-columns: repeat(3, 1fr);
@@ -464,6 +483,16 @@ body {
     .project .project__slides--info-title {
       margin: 2rem 1rem 1rem; }
     .project .project__slides--info-text {
-      padding: 0 1rem; } }
+      padding: 0 1rem; }
+
+  .footer__background {
+    position: relative;
+    width: 120%;
+    height: 140%;
+    left: -10%;
+    z-index: -1; }
+
+  .footer {
+    flex-direction: column; } }
 
 /*# sourceMappingURL=styles_new.css.map */
