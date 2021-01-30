@@ -67,12 +67,13 @@ body {
   padding: 0;
   overflow-x: hidden;
   background-color: white;
+  overflow-y: hidden;
 }
 
 .grid-container {
   top: 0; right: 0; left: 0; bottom: 0;
   display: grid;
-  grid-template-columns: 1fr [grid-s] repeat(12, minmax(2rem, 5rem)) [grid-e] 1fr;
+  grid-template-columns: minmax(1rem, 1fr) [grid-s] repeat(12, minmax(2rem, 5rem)) [grid-e] minmax(1rem, 1fr);
   grid-template-rows: 130vh 100vh 100vh repeat(4, auto);
   grid-column-gap: 1.25rem;
   justify-content: center;
@@ -111,6 +112,7 @@ body {
 .parallax {
   position: absolute;
   top: 0; right: 0; bottom: 0; left: 0;
+  margin: auto;
   width: 100vw;
   height: 100vh;
   z-index: -10;
@@ -144,9 +146,11 @@ $circle-width: 14rem;
 .parallax__element--slice14 { width: $circle-width; }
 .parallax__element--slice15 { width: $circle-width * 1.9; }
 .parallax__element--slice16 { width: $circle-width * 1; }
-.parallax__element--circular-text-small { width: $circle-width * 2.7;}
-.parallax__element--circular-text-large { width: $circle-width * 5.2;}
-
+.parallax__element--circular-text-small { width: $circle-width * 3.0;}
+.parallax__element--circular-text-large {
+  display: none;
+  width: $circle-width * 5.2;
+}
 
 .loading {
   position: absolute;
@@ -165,8 +169,8 @@ $circle-width: 14rem;
   width: $circle-width * 0.4;
 }
 .loading__bg {
-  width: 150vw;
-  height: 150vw;
+  width: 150%;
+  height: #{width};
   background-color: $blue;
   border-radius: 0;
 }
@@ -325,7 +329,7 @@ $circle-width: 14rem;
   bottom: 0;
   display: grid;
   grid-template-columns: 1fr [grid-s] repeat(12, 5rem) [grid-e] 1fr;
-  grid-template-rows: auto auto;
+  grid-template-rows: auto auto auto;
   grid-gap: 1.25rem;
   justify-content: center;
 
@@ -341,28 +345,21 @@ $circle-width: 14rem;
     margin-bottom: 4rem;
   }
   .project__large_title {
-    position: relative;
-    grid-column: grid-s / -1;
-    grid-row: 2 / 2;
+    position: absolute;
     font-size: 29rem;
-    margin: 45rem 0 0 -2rem;
+    margin: 45rem 0 0 2rem;
     white-space: nowrap;
     color: $off-black;
   }
-  .project__slides {
+  .project__slides--info {
+    grid-column: grid-s / span 5;
     grid-row: 2 / 2;
+  }
+  .project__slides--images {
+    grid-row: 3 / 3;
+    grid-column: grid-s / span 5;
     display: flex;
     flex-wrap: wrap;
-  }
-  .project__slides--left {
-    grid-column: grid-s / span 5;
-  }
-  .project__slides--right {
-    grid-column: 7 / span 5;
-    justify-content: right;
-  }
-  .project__slides {
-    margin-bottom: 1.25rem;
   }
   .project__slides--image {
     width: 100%;
@@ -372,9 +369,6 @@ $circle-width: 14rem;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-  }
-  .project__slides--text {
-    margin-top: auto;
   }
   .project__slides--info-title {
     color: $off-black;
@@ -432,8 +426,9 @@ $circle-width: 14rem;
     display: inline-block;
   }
   .parallax__element--circular-text-large {
-    width: 130%;
-    left: -15%;
+    display: inline-block;
+    width: 110%;
+    left: -5%;
   }
   .parallax__element--circular-text-small {
     width: 60%;
@@ -455,7 +450,7 @@ $circle-width: 14rem;
       grid-row: 5 / span 1;
     }
     .projects {
-      grid-column: 1 / -2;
+      grid-column: 1 / -1;
       grid-row: 6 / span 1;
     }
     .footer__background {
@@ -466,6 +461,10 @@ $circle-width: 14rem;
       grid-column: 1 / -1;
       grid-row: 7 / span 1;
     }
+  }
+
+  .parallax__element--circular-text-small {
+    display: none;
   }
 
   .intro {
@@ -486,6 +485,17 @@ $circle-width: 14rem;
         top: 1rem;
       }
     }
+    .logos {
+      .logo__element {
+        align-self: flex-end;
+      }
+    }
+  }
+
+  .about {
+    .about__element {
+      font-size: 1.5rem;
+    }
   }
 
   .projects {
@@ -493,7 +503,10 @@ $circle-width: 14rem;
       top: 20rem;
     }
     .projects__element--title {
-      font-size: 5rem;
+      display: none;
+    }
+    .projects__element--group {
+      margin: 4rem 0;
     }
     .projects__element--image {
       width: 100%;
