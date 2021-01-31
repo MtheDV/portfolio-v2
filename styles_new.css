@@ -61,8 +61,8 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  background-color: white;
-  overflow-y: hidden; }
+  overflow-y: hidden;
+  background-color: white; }
 
 .grid-container {
   top: 0;

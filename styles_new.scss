@@ -66,8 +66,8 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  background-color: white;
   overflow-y: hidden;
+  background-color: white;
 }
 
 .grid-container {
@@ -146,7 +146,7 @@ $circle-width: 14rem;
 .parallax__element--slice14 { width: $circle-width; }
 .parallax__element--slice15 { width: $circle-width * 1.9; }
 .parallax__element--slice16 { width: $circle-width * 1; }
-.parallax__element--circular-text-small { width: $circle-width * 3.0;}
+.parallax__element--circular-text-small { width: $circle-width * 3.0; }
 .parallax__element--circular-text-large {
   display: none;
   width: $circle-width * 5.2;
