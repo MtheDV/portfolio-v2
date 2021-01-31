@@ -172,6 +172,9 @@ $circle-width: 14rem;
   background-color: $blue;
   border-radius: 0;
 }
+.loading__circle {
+  width: $circle-width * 0.9;
+}
 @media (orientation:landscape) {
   .loading__bg {
     width: 100vw;

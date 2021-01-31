@@ -204,6 +204,9 @@ body {
   background-color: #4173FD;
   border-radius: 0; }
 
+.loading__circle {
+  width: 12.6rem; }
+
 @media (orientation: landscape) {
   .loading__bg {
     width: 100vw;

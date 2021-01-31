@@ -15,9 +15,20 @@ ScrollTrigger.defaults({
   markers: false
 });
 
+gsap.to(".loading__circle", {
+  rotation: 360,
+  repeat: -1,
+  duration: 20,
+  ease: "none"
+})
+
 window.onload = () => {
   let t1 = new TimelineMax()
-    .to(".loading__bg", {
+    .to(".loading__circle", {
+      opacity: 0,
+      duration: 0.5,
+      ease: "none"
+    }).to(".loading__bg", {
       width: "14rem",
       height: "14rem",
       borderRadius: "50%",
