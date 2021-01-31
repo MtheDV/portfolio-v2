@@ -212,10 +212,12 @@ body {
   justify-content: center;
   align-content: center;
   width: 50vw; }
+  .intro .intro__content {
+    padding: 0; }
   .intro .intro__element {
     font-size: 3rem;
     white-space: nowrap;
-    margin: 0 1rem 0 0; }
+    margin: 0; }
 
 .nav {
   position: sticky;
@@ -227,11 +229,14 @@ body {
   flex-direction: column;
   justify-content: space-between; }
   .nav .nav__element--name {
+    display: flex;
+    justify-content: left;
     position: absolute;
     font-size: 3rem;
     opacity: 0;
     pointer-events: none;
-    white-space: nowrap; }
+    white-space: nowrap;
+    width: 100%; }
   .nav .links {
     margin-top: 8rem;
     display: flex;
@@ -289,13 +294,12 @@ body {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100%;
-  margin-bottom: 20rem; }
+  margin-bottom: 10rem; }
   .projects .projects__element--titles {
     position: absolute;
     display: flex;
     flex-wrap: nowrap;
-    top: 25rem;
+    top: 16rem;
     z-index: -2; }
   .projects .projects__element--title {
     font-size: 8rem;
@@ -440,16 +444,9 @@ body {
       white-space: normal; }
 
   .nav .nav__element--name {
-    display: none; }
-  .nav .links {
-    margin-top: 2rem; }
-    .nav .links .links__element--about-img {
-      top: 1rem; }
+    justify-content: right; }
   .nav .logos .logo__element {
     align-self: flex-end; }
-
-  .about .about__element {
-    font-size: 1.5rem; }
 
   .projects .projects__element--titles {
     top: 20rem; }
@@ -501,5 +498,15 @@ body {
 
   .footer {
     flex-direction: column; } }
+@media (max-width: 550px) {
+  .nav .nav__element--name {
+    display: none; }
+  .nav .links {
+    margin-top: 2rem; }
+    .nav .links .links__element--about-img {
+      top: 1rem; }
+
+  .about .about__element {
+    font-size: 1.5rem; } }
 
 /*# sourceMappingURL=styles_new.css.map */

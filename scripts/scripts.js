@@ -15,7 +15,8 @@ ScrollTrigger.defaults({
   markers: false
 });
 
-let t1 = new TimelineMax()
+window.onload = () => {
+  let t1 = new TimelineMax()
   .to(".loading__bg", {
     width: "14rem",
     height: "14rem",
@@ -23,131 +24,129 @@ let t1 = new TimelineMax()
     duration: 1
   });
 
-gsap.to(".parallax__element--circular-text-small", {
-  rotation: 360,
-  repeat: -1,
-  duration: 20,
-  ease: "none"
-})
-gsap.to(".parallax__element--circular-text-large", {
-  rotation: -360,
-  repeat: -1,
-  duration: 25,
-  ease: "none"
-})
+  gsap.to(".parallax__element--circular-text-small", {
+    rotation: 360,
+    repeat: -1,
+    duration: 20,
+    ease: "none"
+  })
+  gsap.to(".parallax__element--circular-text-large", {
+    rotation: -360,
+    repeat: -1,
+    duration: 25,
+    ease: "none"
+  })
 
-let tIntro = new TimelineMax({
-  scrollTrigger: {
-    trigger: ".intro__content",
-    start: "center center",
-    end: "center top-=500",
-    scrub: true,
-    pin: true
-  }
-}).to(".intro__element--hide", {
-  opacity: 0,
-  delay: 2
-}).to(".intro__element--name", {
-  opacity: 0,
-  delay: 3
-});
+  let tIntro = new TimelineMax({
+    scrollTrigger: {
+      trigger: ".intro__content",
+      start: "center center",
+      end: "center top-=500",
+      scrub: true,
+      pin: true
+    }
+  }).to(".intro__element--hide", {
+    opacity: 0,
+    delay: 2
+  }).to(".intro__element--name", {
+    opacity: 0,
+    delay: 3
+  });
 
-let t2 = new TimelineMax({
-  scrollTrigger: {
-    trigger: ".about",
-    start: "top-=800 center",
-    end: "top-=800 center-=700",
-    scrub: true
-  }
-}).to(".nav__element--name", {
-  opacity: 1,
-  duration: 0.75
-}).to(".links__element", {
-  opacity: 1,
-  stagger: 1
-}).to(".links__element--about-img", {
-  scale: 1,
-  duration: 0.25
-}).to(".logo__element", {
-  opacity: 1,
-  stagger: 1,
-  delay: 3
-});
+  let t2 = new TimelineMax({
+    scrollTrigger: {
+      trigger: ".about",
+      start: "top-=800 center",
+      end: "top-=800 center-=700",
+      scrub: true
+    }
+  }).to(".nav__element--name", {
+    opacity: 1,
+    duration: 0.75
+  }).to(".links__element", {
+    opacity: 1,
+    stagger: 1
+  }).to(".links__element--about-img", {
+    scale: 1,
+    duration: 0.25
+  }).to(".logo__element", {
+    opacity: 1,
+    stagger: 1,
+    delay: 3
+  });
 
-let tAbout = new TimelineMax({
-  repeat: -1,
-  repeatDelay: 0.25,
-  ease: "none",
-}).to(".img-1", {
-  display: "block"
-}).to(".img-1", {
-  display: "none"
-}).to(".img-2", {
-  display: "block"
-}).to(".img-2", {
-  display: "none"
-}).to(".img-3", {
-  display: "block"
-}).to(".img-3", {
-  display: "none"
-}).to(".img-4", {
-  display: "block"
-});
+  let tAbout = new TimelineMax({
+    repeat: -1,
+    repeatDelay: 0.25,
+    ease: "none",
+  }).to(".img-1", {
+    display: "block"
+  }).to(".img-1", {
+    display: "none"
+  }).to(".img-2", {
+    display: "block"
+  }).to(".img-2", {
+    display: "none"
+  }).to(".img-3", {
+    display: "block"
+  }).to(".img-3", {
+    display: "none"
+  }).to(".img-4", {
+    display: "block"
+  });
 
-let t4 = new TimelineMax({
-  scrollTrigger: {
-    trigger: ".about",
-    start: "top+=300 bottom",
-    end: `top+=300 bottom-=${document.querySelector(".projects").offsetHeight * 1.8 + document.querySelector(".about").offsetHeight} + 500`,
-    scrub: true
-  }
-}).to(".links__element--about-img", {
-  y: "+=2rem",
-  duration: 15
-}).to(".links__element--about-img", {
-  y: "+=2rem",
-  marginLeft: "+=0.5rem",
-  duration: 30
-});
+  let t4 = new TimelineMax({
+    scrollTrigger: {
+      trigger: ".about",
+      start: "top+=300 bottom",
+      end: `top+=300 bottom-=${document.querySelector(".projects").offsetHeight + document.querySelector(".about").offsetHeight} + 500`,
+      scrub: true
+    }
+  }).to(".links__element--about-img", {
+    y: "+=2rem",
+    duration: 15
+  }).to(".links__element--about-img", {
+    y: "+=2rem",
+    marginLeft: "+=0.5rem",
+    duration: 30
+  });
 
-let tProjects = new TimelineMax({
-  scrollTrigger: {
-    trigger: ".projects__element--titles",
-    start: "center center",
-    end: `center bottom-=${document.querySelector(".projects").offsetHeight * 1.7}`,// + document.querySelector(".footer").offsetHeight}`,
-    scrub: true,
-    pin: true
-  }
-}).to(".projects__element--title", {
-  delay: 1,
-  text: "rock paper scissors____",
-  ease: "none"
-}).to(".projects__element--title", {
-  delay: 1,
-  text: "ecommerce website___",
-  ease: "none"
-}).to(".projects__element--title", {
-  delay: 1,
-  text: "exodus_____________",
-  ease: "none"
-}).to(".projects__element--title", {
-  delay: 1,
-  text: "logo collection_______",
-  ease: "none"
-});
+  let tProjects = new TimelineMax({
+    scrollTrigger: {
+      trigger: ".projects__element--titles",
+      start: "center center",
+      end: `center center-=${document.querySelector(".projects").offsetHeight - 600}`,
+      scrub: true,
+      pin: true
+    }
+  }).to(".projects__element--title", {
+    delay: 1,
+    text: "rock paper scissors____",
+    ease: "none"
+  }).to(".projects__element--title", {
+    delay: 1,
+    text: "ecommerce website___",
+    ease: "none"
+  }).to(".projects__element--title", {
+    delay: 1,
+    text: "exodus_____________",
+    ease: "none"
+  }).to(".projects__element--title", {
+    delay: 1,
+    text: "logo collection_______",
+    ease: "none"
+  });
 
-gsap.to(".projects__element--title", {
-  xPercent: "-=100",
-  duration: 10,
-  repeat: -1,
-  ease: "none"
-});
+  gsap.to(".projects__element--title", {
+    xPercent: "-=100",
+    duration: 10,
+    repeat: -1,
+    ease: "none"
+  });
 
-timelineMain.add(t1, t2, t4, tProjects, tIntro, tAbout);
-
-window.onload = () => {
-  timelineMain.play();
+  timelineMain.add(t1, t2, t4, tProjects, tIntro, tAbout);
   document.querySelector("body").style.overflowY = "scroll";
+  timelineMain.play();
 }
 
 ///////////////////////////////////////
