@@ -17,12 +17,13 @@ ScrollTrigger.defaults({
 
 window.onload = () => {
   let t1 = new TimelineMax()
-  .to(".loading__bg", {
-    width: "14rem",
-    height: "14rem",
-    borderRadius: "50%",
-    duration: 1
-  });
+    .to(".loading__bg", {
+      width: "14rem",
+      height: "14rem",
+      borderRadius: "50%",
+      duration: 0.75,
+      ease: "circ"
+    });
 
   gsap.to(".parallax__element--circular-text-small", {
     rotation: 360,
@@ -147,73 +148,73 @@ window.onload = () => {
   timelineMain.add(t1, t2, t4, tProjects, tIntro, tAbout);
   document.querySelector("body").style.overflowY = "scroll";
   timelineMain.play();
-}
 
 ///////////////////////////////////////
 ////////////// Parallax ///////////////
 ///////////////////////////////////////
-let parallaxElements = document.getElementsByClassName("parallax__element");
+  let parallaxElements = document.getElementsByClassName("parallax__element");
 
-function parallaxCalculate(height, width, mouseY, mouseX, speedX, speedY, xOffset, yOffset) {
-  return [((((height - mouseY) / height * 100) - 50) * speedY) + yOffset,
-    ((((width - mouseX) / width * 100) - 50) * speedX) + xOffset];
-}
-
-function parallax(e) {
-  let width = window.innerWidth;
-  let height = window.innerHeight;
-  let mouseX = e.clientX;
-  let mouseY = e.clientY;
-
-  if (mouseX == null && mouseY == null) {
-    mouseX = width / 2;
-    mouseY = height / 2;
+  function parallaxCalculate(height, width, mouseY, mouseX, speedX, speedY, xOffset, yOffset) {
+    return [((((height - mouseY) / height * 100) - 50) * speedY) + yOffset,
+      ((((width - mouseX) / width * 100) - 50) * speedX) + xOffset];
   }
 
-  if (width >= 450) {
-    for (let i = 0; i < parallaxElements.length; ++i) {
-      let idManipulates = parallaxElements[i].id;
-      idManipulates = idManipulates.split("_");
-      let parallaxCalc = parallaxCalculate(height, width, mouseY, mouseX,
-        Number(idManipulates[0]), Number(idManipulates[1]),
-        Number(idManipulates[2]), Number(idManipulates[3]));
+  function parallax(e) {
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    let mouseX = e.clientX;
+    let mouseY = e.clientY;
 
-      parallaxElements[i].style["-webkit-transform"] = "translate3d(" + (parallaxCalc[1]) + "vw," + (parallaxCalc[0]) + "vh, 0)";
-      parallaxElements[i].style["-ms-transform"] = "translate3d(" + (parallaxCalc[1]) + "vw," + (parallaxCalc[0]) + "vh, 0)";
-      parallaxElements[i].style.transform = "translate3d(" + (parallaxCalc[1]) + "vw," + (parallaxCalc[0]) + "vh, 0)";
-      parallaxElements[i].style.zIndex = (parallaxElements.length - i).toString();
+    if (mouseX == null && mouseY == null) {
+      mouseX = width / 2;
+      mouseY = height / 2;
+    }
+
+    if (width >= 450) {
+      for (let i = 0; i < parallaxElements.length; ++i) {
+        let idManipulates = parallaxElements[i].id;
+        idManipulates = idManipulates.split("_");
+        let parallaxCalc = parallaxCalculate(height, width, mouseY, mouseX,
+          Number(idManipulates[0]), Number(idManipulates[1]),
+          Number(idManipulates[2]), Number(idManipulates[3]));
+
+        parallaxElements[i].style["-webkit-transform"] = "translate3d(" + (parallaxCalc[1]) + "vw," + (parallaxCalc[0]) + "vh, 0)";
+        parallaxElements[i].style["-ms-transform"] = "translate3d(" + (parallaxCalc[1]) + "vw," + (parallaxCalc[0]) + "vh, 0)";
+        parallaxElements[i].style.transform = "translate3d(" + (parallaxCalc[1]) + "vw," + (parallaxCalc[0]) + "vh, 0)";
+        parallaxElements[i].style.zIndex = (parallaxElements.length - i).toString();
+      }
     }
   }
-}
 
-window.addEventListener("mousemove", (e) => {
-  if (window.innerWidth >= 1250)
-    parallax(e);
-});
-window.dispatchEvent(new Event("mousemove"));
+  window.addEventListener("mousemove", (e) => {
+    if (window.innerWidth >= 1250)
+      parallax(e);
+  });
+  window.dispatchEvent(new Event("mousemove"));
 
 ///////////////////////////////////////
 //////////// HOVER SKEW ///////////////
 ///////////////////////////////////////
-function skew(e) {
-  let boundRect = e.target.getBoundingClientRect();
-  let mouseX = e.clientX;
-  let mouseY = e.clientY;
-  let imageWidth = boundRect.width;
-  let imageHeight = boundRect.height;
-  let imageX = boundRect.x;
-  let imageY = boundRect.y;
+  function skew(e) {
+    let boundRect = e.target.getBoundingClientRect();
+    let mouseX = e.clientX;
+    let mouseY = e.clientY;
+    let imageWidth = boundRect.width;
+    let imageHeight = boundRect.height;
+    let imageX = boundRect.x;
+    let imageY = boundRect.y;
 
-  let rotateY = -1 * ((imageX + imageWidth / 2) - mouseX) / imageWidth * 20;
-  let rotateX = ((imageY + imageHeight / 2) - mouseY) / imageHeight * 20;
+    let rotateY = -1 * ((imageX + imageWidth / 2) - mouseX) / imageWidth * 20;
+    let rotateX = ((imageY + imageHeight / 2) - mouseY) / imageHeight * 20;
 
-  e.target.style["-webkit-transform"] = "rotateY(" + rotateY + "deg) rotateX(" + rotateX + "deg)";
-  e.target.style["-ms-transform"] = "rotateY(" + rotateY + "deg) rotateX(" + rotateX + "deg)";
-  e.target.style.transform = "rotateY(" + rotateY + "deg) rotateX(" + rotateX + "deg)";
+    e.target.style["-webkit-transform"] = "rotateY(" + rotateY + "deg) rotateX(" + rotateX + "deg)";
+    e.target.style["-ms-transform"] = "rotateY(" + rotateY + "deg) rotateX(" + rotateX + "deg)";
+    e.target.style.transform = "rotateY(" + rotateY + "deg) rotateX(" + rotateX + "deg)";
+  }
+
+  window.addEventListener("mousemove", (e) => {
+    if (window.innerWidth >= 800)
+      if (e.target.classList.contains("projects__element--image"))
+        skew(e);
+  });
 }
-
-window.addEventListener("mousemove", (e) => {
-  if (window.innerWidth >= 800)
-    if (e.target.classList.contains("projects__element--image"))
-      skew(e);
-});

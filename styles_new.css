@@ -201,11 +201,17 @@ body {
   width: 5.6rem; }
 
 .loading__bg {
-  width: 150%;
-  height: width;
   background-color: #4173FD;
   border-radius: 0; }
 
+@media (orientation: landscape) {
+  .loading__bg {
+    width: 100vw;
+    height: 100vw; } }
+@media (orientation: portrait) {
+  .loading__bg {
+    width: 100vh;
+    height: 100vh; } }
 .intro {
   display: flex;
   flex-wrap: wrap;
