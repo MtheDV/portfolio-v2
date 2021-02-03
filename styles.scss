@@ -152,29 +152,29 @@ $circle-width: 14rem;
   width: $circle-width * 5.2;
 }
 
-.loading {
-  position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
-  overflow: hidden;
-}
-.loading__element {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-}
-.loading__logo {
-  width: $circle-width * 0.4;
-}
-.loading__bg {
-  background-color: $blue;
-  border-radius: 0;
-}
-.loading__circle {
-  width: $circle-width * 0.9;
-}
+//.loading {
+//  position: absolute;
+//  top: 0; right: 0; bottom: 0; left: 0;
+//  overflow: hidden;
+//}
+//.loading__element {
+//  position: absolute;
+//  left: 0;
+//  right: 0;
+//  top: 0;
+//  bottom: 0;
+//  margin: auto;
+//}
+//.loading__logo {
+//  width: $circle-width * 0.4;
+//}
+//.loading__bg {
+//  background-color: $blue;
+//  border-radius: 0;
+//}
+//.loading__circle {
+//  width: $circle-width * 0.9;
+//}
 @media (orientation:landscape) {
   .loading__bg {
     width: 100vw;

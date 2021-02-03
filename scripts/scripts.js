@@ -15,13 +15,6 @@ ScrollTrigger.defaults({
   markers: false
 });
 
-gsap.to(".loading__circle", {
-  rotation: 360,
-  repeat: -1,
-  duration: 20,
-  ease: "none"
-})
-
 window.onload = () => {
   let t1 = new TimelineMax()
     .to(".loading__circle", {

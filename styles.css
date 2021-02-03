@@ -181,32 +181,6 @@ body {
   display: none;
   width: 72.8rem; }
 
-.loading {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  overflow: hidden; }
-
-.loading__element {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto; }
-
-.loading__logo {
-  width: 5.6rem; }
-
-.loading__bg {
-  background-color: #4173FD;
-  border-radius: 0; }
-
-.loading__circle {
-  width: 12.6rem; }
-
 @media (orientation: landscape) {
   .loading__bg {
     width: 100vw;
