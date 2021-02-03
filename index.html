@@ -61,14 +61,6 @@
     </style>
     <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/styles.css"></noscript>
-    <script>
-      gsap.to(".loading__circle", {
-        rotation: 360,
-        repeat: -1,
-        duration: 20,
-        ease: "none"
-      });
-    </script>
 </head>
 <body>
 
@@ -286,6 +278,14 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
+<script>
+  gsap.to(".loading__circle", {
+    rotation: 360,
+    repeat: -1,
+    duration: 20,
+    ease: "none"
+  });
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollTrigger.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/TextPlugin.min.js"></script>
 <script src="scripts/scripts.js" defer></script>
