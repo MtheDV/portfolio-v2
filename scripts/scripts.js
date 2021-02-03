@@ -16,6 +16,8 @@ ScrollTrigger.defaults({
 });
 
 window.onload = () => {
+  document.querySelector(".loading").style.position = "absolute";
+
   let t1 = new TimelineMax()
     .to(".loading__circle", {
       opacity: 0,
@@ -34,13 +36,13 @@ window.onload = () => {
     repeat: -1,
     duration: 20,
     ease: "none"
-  })
+  });
   gsap.to(".parallax__element--circular-text-large", {
     rotation: -360,
     repeat: -1,
     duration: 25,
     ease: "none"
-  })
+  });
 
   let tIntro = new TimelineMax({
     scrollTrigger: {
@@ -153,9 +155,9 @@ window.onload = () => {
   document.querySelector("body").style.overflowY = "scroll";
   timelineMain.play();
 
-///////////////////////////////////////
-////////////// Parallax ///////////////
-///////////////////////////////////////
+  ///////////////////////////////////////
+  ////////////// Parallax ///////////////
+  ///////////////////////////////////////
   let parallaxElements = document.getElementsByClassName("parallax__element");
 
   function parallaxCalculate(height, width, mouseY, mouseX, speedX, speedY, xOffset, yOffset) {
@@ -196,9 +198,9 @@ window.onload = () => {
   });
   window.dispatchEvent(new Event("mousemove"));
 
-///////////////////////////////////////
-//////////// HOVER SKEW ///////////////
-///////////////////////////////////////
+  ///////////////////////////////////////
+  //////////// HOVER SKEW ///////////////
+  ///////////////////////////////////////
   function skew(e) {
     let boundRect = e.target.getBoundingClientRect();
     let mouseX = e.clientX;
