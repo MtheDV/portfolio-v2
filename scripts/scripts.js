@@ -7,6 +7,7 @@
 ///////////////////////////////////////
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
+gsap.registerPlugin(ScrollToPlugin);
 
 let timelineMain = new TimelineMax({paused: true});
 
@@ -118,38 +119,55 @@ window.onload = () => {
     duration: 30
   });
 
+  // let projects = document.getElementsByClassName("projects__element--group");
+  // let projectY = [];
+  // for (let i = 0; i < projects.length; ++i) {
+  //   projectY.push(projects[i].getBoundingClientRect().y);
+  // }
+  // let snapProject = gsap.utils.snap(projectY);
+  //
+  // gsap.utils.toArray(".projects__element--group").forEach(project => {
+  //   ScrollTrigger.create({
+  //     trigger: project,
+  //     start: `top center`,
+  //     end: `bottom center`,
+  //     snap: 'center',
+  //     markers: true
+  //   });
+  // });
+
   let tProjects = new TimelineMax({
     scrollTrigger: {
-      trigger: ".projects__element--titles",
+      trigger: ".project-titles",
       start: "center center",
-      end: `center center-=${document.querySelector(".projects").offsetHeight - 600}`,
+      end: `center center-=${document.querySelector(".projects").offsetHeight - 550}`,
       scrub: true,
-      pin: true
+      snap: 1 / 4,
     }
-  }).to(".projects__element--title", {
+  }).to(".project-title", {
     delay: 1,
-    text: "rock paper scissors____",
+    text: "&nbsp;&nbsp;&nbsp;rock paper scissors",
     ease: "none"
-  }).to(".projects__element--title", {
+  }).to(".project-title", {
     delay: 1,
-    text: "ecommerce website___",
+    text: "&nbsp;&nbsp;&nbsp;ecommerce website",
     ease: "none"
-  }).to(".projects__element--title", {
+  }).to(".project-title", {
     delay: 1,
-    text: "exodus_____________",
+    text: "&nbsp;&nbsp;&nbsp;exodus",
     ease: "none"
-  }).to(".projects__element--title", {
+  }).to(".project-title", {
     delay: 1,
-    text: "logo collection_______",
+    text: "&nbsp;&nbsp;&nbsp;logo collection",
     ease: "none"
   });
 
-  gsap.to(".projects__element--title", {
-    xPercent: "-=100",
-    duration: 10,
-    repeat: -1,
-    ease: "none"
-  });
+  // gsap.to(".projects__element--title", {
+  //   xPercent: "-=100",
+  //   duration: 10,
+  //   repeat: -1,
+  //   ease: "none"
+  // });
 
   timelineMain.add(t1, t2, t4, tProjects, tIntro, tAbout);
   document.querySelector("body").style.overflowY = "scroll";

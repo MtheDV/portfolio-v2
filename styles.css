@@ -84,6 +84,9 @@ body {
   .grid-container .about {
     grid-column: 4 / span 7;
     grid-row: 5 / span 1; }
+  .grid-container .project-titles {
+    grid-column: 7 / span 2;
+    grid-row: 6 / span 1; }
   .grid-container .projects {
     grid-column: grid-s / grid-e;
     grid-row: 6 / span 1; }
@@ -178,6 +181,32 @@ body {
   display: none;
   width: 72.8rem; }
 
+.loading {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden; }
+
+.loading__element {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto; }
+
+.loading__logo {
+  width: 5.6rem; }
+
+.loading__bg {
+  background-color: #4173FD;
+  border-radius: 0; }
+
+.loading__circle {
+  width: 12.6rem; }
+
 @media (orientation: landscape) {
   .loading__bg {
     width: 100vw;
@@ -266,8 +295,28 @@ body {
   line-height: 180%;
   margin-bottom: 4rem; }
 
+.project-titles {
+  position: sticky;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  height: 90vh;
+  margin-bottom: 12rem;
+  z-index: 2;
+  pointer-events: none; }
+
+.project-title {
+  font-size: 6rem;
+  white-space: nowrap;
+  margin: 0 1rem;
+  mix-blend-mode: difference; }
+
+.project-title-outline {
+  color: white;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; }
+
 .projects {
-  position: relative;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -275,21 +324,10 @@ body {
   justify-content: center;
   width: 100%;
   margin-bottom: 10rem; }
-  .projects .projects__element--titles {
-    position: absolute;
-    display: flex;
-    flex-wrap: nowrap;
-    top: 16rem;
-    z-index: -2; }
-  .projects .projects__element--title {
-    font-size: 8rem;
-    white-space: nowrap;
-    margin: 0;
-    padding: 0 0 4rem 0;
-    width: 100%; }
   .projects .projects__element--group {
     margin: 8rem 0;
-    perspective: 400px; }
+    perspective: 400px;
+    scroll-snap-align: center; }
   .projects .projects__element--image {
     transition: all 0.1s linear; }
   .projects #construct {
