@@ -27,10 +27,6 @@ $blue: #4173FD;
           transform-origin: $property1 $property2;
 }
 
-@mixin flex($property) {
-
-}
-
 @mixin keyframes($animation) {
   @-webkit-keyframes #{$animation} {
     @content;
@@ -50,12 +46,8 @@ $blue: #4173FD;
   0%, 100% { @include transform(translateY(-1rem)) }
   50% { @include transform(translateY(1rem)) }
 }
-@include keyframes(grow) {
-  0% { @include transform(scale(0)) }
-  100% { @include transform(scale(1)) }
-}
-@mixin grow-animate {
-  @include animate(grow 1s 1);
+@mixin bounce {
+  @include animate(bounce 2s infinite);
 }
 
 html {
@@ -68,6 +60,7 @@ body {
   overflow-x: hidden;
   overflow-y: hidden;
   background-color: white;
+  scroll-behavior: smooth;
 }
 
 .grid-container {
@@ -92,11 +85,11 @@ body {
     grid-row: 5 / span 1;
   }
   .project-titles {
-    grid-column: 7 / span 2;
+    grid-column: grid-s / grid-e;
     grid-row: 6 / span 1;
   }
   .projects {
-    grid-column: grid-s / grid-e;
+    grid-column: 2 / 3;
     grid-row: 6 / span 1;
   }
   .footer__background {
@@ -107,6 +100,18 @@ body {
     grid-column: grid-s / grid-e;
     grid-row: 7 / span 1;
   }
+}
+
+.scroll_arrow {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: 2rem;
+  width: 3rem;
+  bottom: 3rem;
+  z-index: 12;
+  @include bounce;
 }
 
 .parallax {
@@ -295,21 +300,21 @@ $circle-width: 14rem;
 .project-titles {
   position: sticky;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   top: 0;
-  height: 90vh;
+  height: 100vh;
   margin-bottom: 12rem;
   z-index: 2;
   pointer-events: none;
 }
 .project-title {
-  font-size: 6rem;
-  white-space: nowrap;
-  margin: 0 1rem;
-  mix-blend-mode: difference;
+  font-size: 8rem;
+  text-align: right;
+  width: 100%;
 }
 .project-title-outline {
+  font-size: 10rem;
   color: white;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
@@ -321,30 +326,30 @@ $circle-width: 14rem;
   align-items: center;
   justify-content: center;
   width: 100%;
-  margin-bottom: 10rem;
+  margin: 0 0 20rem -7rem;
 
   .projects__element--group {
     margin: 8rem 0;
     perspective: 400px;
-    scroll-snap-align: center;
   }
   .projects__element--image {
     @include transition(all .1s linear);
   }
+  $changeImageSize: 1.2;
   #construct {
-     width: 37rem;
+     width: 37rem * $changeImageSize;
   }
   #rps {
-     width: 52rem;
+     width: 52rem * $changeImageSize;
   }
   #ecommerce {
-     width: 43rem;
+     width: 43rem * $changeImageSize;
   }
-  #exodus {
-     width: 39rem;
+  #exodus_img {
+     width: 39rem * $changeImageSize;
   }
   #logos {
-     width: 33rem;
+     width: 33rem * $changeImageSize;
   }
 }
 
@@ -444,7 +449,7 @@ $circle-width: 14rem;
   }
 }
 
-@media (max-width: 1250px) {
+@media (max-width: 1100px) {
   .parallax__element {
     display: none;
   }
@@ -474,6 +479,10 @@ $circle-width: 14rem;
     .about {
       grid-column: 1 / -2;
       grid-row: 5 / span 1;
+    }
+    .project-titles {
+      grid-column: 1 / -1;
+      grid-row: 6 / span 1;
     }
     .projects {
       grid-column: 1 / -1;
@@ -511,13 +520,11 @@ $circle-width: 14rem;
     }
   }
 
+  .project-titles {
+    display: none;
+  }
   .projects {
-    .projects__element--titles {
-      top: 20rem;
-    }
-    .projects__element--title {
-      display: none;
-    }
+    margin-left: 0;
     .projects__element--group {
       margin: 4rem 0;
     }
@@ -533,7 +540,7 @@ $circle-width: 14rem;
     #ecommerce {
       width: 100%;
     }
-    #exodus {
+    #exodus_img {
       width: 100%;
     }
     #logos {

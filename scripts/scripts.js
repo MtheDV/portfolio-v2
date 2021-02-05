@@ -119,55 +119,41 @@ window.onload = () => {
     duration: 30
   });
 
-  // let projects = document.getElementsByClassName("projects__element--group");
-  // let projectY = [];
-  // for (let i = 0; i < projects.length; ++i) {
-  //   projectY.push(projects[i].getBoundingClientRect().y);
-  // }
-  // let snapProject = gsap.utils.snap(projectY);
-  //
-  // gsap.utils.toArray(".projects__element--group").forEach(project => {
-  //   ScrollTrigger.create({
-  //     trigger: project,
-  //     start: `top center`,
-  //     end: `bottom center`,
-  //     snap: 'center',
-  //     markers: true
-  //   });
-  // });
+  let projectArray = gsap.utils.toArray(".projects__element--group");
+  projectArray.forEach(project => {
+    ScrollTrigger.create({
+      trigger: project,
+      start: "top center",
+      end: "bottom center",
+      onToggle: self => {
+        gsap.to(".project-title", {
+          text: project.id,
+          ease: "none"
+        });
+      }
+    });
+  });
 
   let tProjects = new TimelineMax({
     scrollTrigger: {
-      trigger: ".project-titles",
-      start: "center center",
-      end: `center center-=${document.querySelector(".projects").offsetHeight - 550}`,
-      scrub: true,
-      snap: 1 / 4,
+      trigger: ".projects",
+      start: "top center",
+      end: "bottom center",
+      snap: {
+        snapTo: [0.1, 0.3, 0.525, 0.73, 0.925], duration: 0.25
+      }
     }
-  }).to(".project-title", {
-    delay: 1,
-    text: "&nbsp;&nbsp;&nbsp;rock paper scissors",
-    ease: "none"
-  }).to(".project-title", {
-    delay: 1,
-    text: "&nbsp;&nbsp;&nbsp;ecommerce website",
-    ease: "none"
-  }).to(".project-title", {
-    delay: 1,
-    text: "&nbsp;&nbsp;&nbsp;exodus",
-    ease: "none"
-  }).to(".project-title", {
-    delay: 1,
-    text: "&nbsp;&nbsp;&nbsp;logo collection",
-    ease: "none"
-  });
+  })
 
-  // gsap.to(".projects__element--title", {
-  //   xPercent: "-=100",
-  //   duration: 10,
-  //   repeat: -1,
-  //   ease: "none"
-  // });
+  // let tTitle = new TimelineMax({
+  //   scrollTrigger: {
+  //     trigger: ".project-title",
+  //     start: "center center",
+  //     end: `center center-=${document.querySelector(".projects").offsetHeight}`,
+  //     pin: true,
+  //     markers: true
+  //   }
+  // })
 
   timelineMain.add(t1, t2, t4, tProjects, tIntro, tAbout);
   document.querySelector("body").style.overflowY = "scroll";
@@ -176,14 +162,14 @@ window.onload = () => {
   ///////////////////////////////////////
   ////////////// Parallax ///////////////
   ///////////////////////////////////////
-  let parallaxElements = document.getElementsByClassName("parallax__element");
+  let parallaxElementsLanding = document.getElementsByClassName("parallax__element");
 
   function parallaxCalculate(height, width, mouseY, mouseX, speedX, speedY, xOffset, yOffset) {
     return [((((height - mouseY) / height * 100) - 50) * speedY) + yOffset,
       ((((width - mouseX) / width * 100) - 50) * speedX) + xOffset];
   }
 
-  function parallax(e) {
+  function parallax(e, parallaxElements) {
     let width = window.innerWidth;
     let height = window.innerHeight;
     let mouseX = e.clientX;
@@ -205,21 +191,23 @@ window.onload = () => {
         parallaxElements[i].style["-webkit-transform"] = "translate3d(" + (parallaxCalc[1]) + "vw," + (parallaxCalc[0]) + "vh, 0)";
         parallaxElements[i].style["-ms-transform"] = "translate3d(" + (parallaxCalc[1]) + "vw," + (parallaxCalc[0]) + "vh, 0)";
         parallaxElements[i].style.transform = "translate3d(" + (parallaxCalc[1]) + "vw," + (parallaxCalc[0]) + "vh, 0)";
-        parallaxElements[i].style.zIndex = (parallaxElements.length - i).toString();
+        if (!parallaxElements[i].classList.contains("no-z-index-change"))
+          parallaxElements[i].style.zIndex = (parallaxElements.length * -1 - i).toString();
       }
     }
   }
 
   window.addEventListener("mousemove", (e) => {
-    if (window.innerWidth >= 1250)
-      parallax(e);
+    if (window.innerWidth >= 1100)
+      parallax(e, parallaxElementsLanding);
+    //parallax(e, parallaxProjectGroup)
   });
   window.dispatchEvent(new Event("mousemove"));
 
   ///////////////////////////////////////
   //////////// HOVER SKEW ///////////////
   ///////////////////////////////////////
-  function skew(e) {
+  function skew(e, ...skewAlongside) {
     let boundRect = e.target.getBoundingClientRect();
     let mouseX = e.clientX;
     let mouseY = e.clientY;
@@ -234,11 +222,18 @@ window.onload = () => {
     e.target.style["-webkit-transform"] = "rotateY(" + rotateY + "deg) rotateX(" + rotateX + "deg)";
     e.target.style["-ms-transform"] = "rotateY(" + rotateY + "deg) rotateX(" + rotateX + "deg)";
     e.target.style.transform = "rotateY(" + rotateY + "deg) rotateX(" + rotateX + "deg)";
+
+    for (let i = 0; i < skewAlongside.length; ++i) {
+      skewAlongside[i].style["-webkit-transform"] = "rotateY(" + rotateY + "deg) rotateX(" + rotateX + "deg)";
+      skewAlongside[i].style["-ms-transform"] = "rotateY(" + rotateY + "deg) rotateX(" + rotateX + "deg)";
+      skewAlongside[i].style.transform = "rotateY(" + rotateY + "deg) rotateX(" + rotateX + "deg)";
+    }
   }
 
   window.addEventListener("mousemove", (e) => {
     if (window.innerWidth >= 800)
-      if (e.target.classList.contains("projects__element--image"))
+      if (e.target.classList.contains("projects__element--image")) {
         skew(e);
+      }
   });
 }

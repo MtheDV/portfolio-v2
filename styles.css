@@ -26,33 +26,6 @@
     -webkit-transform: translateY(1rem);
     -ms-transform: translateY(1rem);
     transform: translateY(1rem); } }
-@-webkit-keyframes grow {
-  0% {
-    -webkit-transform: scale(0);
-    -ms-transform: scale(0);
-    transform: scale(0); }
-  100% {
-    -webkit-transform: scale(1);
-    -ms-transform: scale(1);
-    transform: scale(1); } }
-@-o-keyframes grow {
-  0% {
-    -webkit-transform: scale(0);
-    -ms-transform: scale(0);
-    transform: scale(0); }
-  100% {
-    -webkit-transform: scale(1);
-    -ms-transform: scale(1);
-    transform: scale(1); } }
-@keyframes grow {
-  0% {
-    -webkit-transform: scale(0);
-    -ms-transform: scale(0);
-    transform: scale(0); }
-  100% {
-    -webkit-transform: scale(1);
-    -ms-transform: scale(1);
-    transform: scale(1); } }
 html {
   font-family: 'Manrope', sans-serif;
   scroll-behavior: smooth; }
@@ -62,7 +35,8 @@ body {
   padding: 0;
   overflow-x: hidden;
   overflow-y: hidden;
-  background-color: white; }
+  background-color: white;
+  scroll-behavior: smooth; }
 
 .grid-container {
   top: 0;
@@ -85,10 +59,10 @@ body {
     grid-column: 4 / span 7;
     grid-row: 5 / span 1; }
   .grid-container .project-titles {
-    grid-column: 7 / span 2;
+    grid-column: grid-s / grid-e;
     grid-row: 6 / span 1; }
   .grid-container .projects {
-    grid-column: grid-s / grid-e;
+    grid-column: 2 / 3;
     grid-row: 6 / span 1; }
   .grid-container .footer__background {
     grid-column: 1 / -1;
@@ -96,6 +70,18 @@ body {
   .grid-container .footer {
     grid-column: grid-s / grid-e;
     grid-row: 7 / span 1; }
+
+.scroll_arrow {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: 2rem;
+  width: 3rem;
+  bottom: 3rem;
+  z-index: 12;
+  -webkit-animation: bounce 2s infinite;
+  animation: bounce 2s infinite; }
 
 .parallax {
   position: absolute;
@@ -298,21 +284,21 @@ body {
 .project-titles {
   position: sticky;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   top: 0;
-  height: 90vh;
+  height: 100vh;
   margin-bottom: 12rem;
   z-index: 2;
   pointer-events: none; }
 
 .project-title {
-  font-size: 6rem;
-  white-space: nowrap;
-  margin: 0 1rem;
-  mix-blend-mode: difference; }
+  font-size: 8rem;
+  text-align: right;
+  width: 100%; }
 
 .project-title-outline {
+  font-size: 10rem;
   color: white;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; }
 
@@ -323,23 +309,22 @@ body {
   align-items: center;
   justify-content: center;
   width: 100%;
-  margin-bottom: 10rem; }
+  margin: 0 0 20rem -7rem; }
   .projects .projects__element--group {
     margin: 8rem 0;
-    perspective: 400px;
-    scroll-snap-align: center; }
+    perspective: 400px; }
   .projects .projects__element--image {
     transition: all 0.1s linear; }
   .projects #construct {
-    width: 37rem; }
+    width: 44.4rem; }
   .projects #rps {
-    width: 52rem; }
+    width: 62.4rem; }
   .projects #ecommerce {
-    width: 43rem; }
-  .projects #exodus {
-    width: 39rem; }
+    width: 51.6rem; }
+  .projects #exodus_img {
+    width: 46.8rem; }
   .projects #logos {
-    width: 33rem; }
+    width: 39.6rem; }
 
 .project {
   top: 0;
@@ -419,7 +404,7 @@ body {
     margin: -1.5rem 0 0 -2.1rem;
     pointer-events: none; }
 
-@media (max-width: 1250px) {
+@media (max-width: 1100px) {
   .parallax__element {
     display: none; }
 
@@ -443,6 +428,9 @@ body {
     .grid-container .about {
       grid-column: 1 / -2;
       grid-row: 5 / span 1; }
+    .grid-container .project-titles {
+      grid-column: 1 / -1;
+      grid-row: 6 / span 1; }
     .grid-container .projects {
       grid-column: 1 / -1;
       grid-row: 6 / span 1; }
@@ -466,24 +454,25 @@ body {
   .nav .logos .logo__element {
     align-self: flex-end; }
 
-  .projects .projects__element--titles {
-    top: 20rem; }
-  .projects .projects__element--title {
+  .project-titles {
     display: none; }
-  .projects .projects__element--group {
-    margin: 4rem 0; }
-  .projects .projects__element--image {
-    width: 100%; }
-  .projects #construct {
-    width: 100%; }
-  .projects #rps {
-    width: 100%; }
-  .projects #ecommerce {
-    width: 100%; }
-  .projects #exodus {
-    width: 100%; }
-  .projects #logos {
-    width: 100%; }
+
+  .projects {
+    margin-left: 0; }
+    .projects .projects__element--group {
+      margin: 4rem 0; }
+    .projects .projects__element--image {
+      width: 100%; }
+    .projects #construct {
+      width: 100%; }
+    .projects #rps {
+      width: 100%; }
+    .projects #ecommerce {
+      width: 100%; }
+    .projects #exodus_img {
+      width: 100%; }
+    .projects #logos {
+      width: 100%; }
 
   .project {
     grid-template-columns: repeat(3, 1fr);
