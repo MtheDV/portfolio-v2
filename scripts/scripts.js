@@ -138,10 +138,11 @@ window.onload = () => {
     scrollTrigger: {
       trigger: ".projects",
       start: "top center",
-      end: "bottom center",
+      end: "bottom-=300 center",
       snap: {
-        snapTo: [0.1, 0.3, 0.525, 0.73, 0.925], duration: 0.25
-      }
+        snapTo: [0.11, 0.33, 0.56, 0.8, 1.0], duration: 0.25
+      },
+      markers: 1
     }
   })
 
