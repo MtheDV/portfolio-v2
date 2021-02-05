@@ -141,8 +141,7 @@ window.onload = () => {
       end: "bottom-=300 center",
       snap: {
         snapTo: [0.11, 0.33, 0.56, 0.8, 1.0], duration: 0.25
-      },
-      markers: 1
+      }
     }
   })
 
