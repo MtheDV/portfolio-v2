@@ -125,12 +125,73 @@ window.onload = () => {
       trigger: project,
       start: "top center",
       end: "bottom center",
-      onToggle: self => {
+      // onToggle: self => {
+      //   gsap.to(".project-title", {
+      //     text: {
+      //       value: project.id,
+      //       delimiter: " "
+      //     },
+      //     duration: 0.01,
+      //     ease: "none"
+      //   });
+      // },
+      onEnter: self => {
+        gsap.timeline().to(".project-title", {
+          text: {
+            value: project.id,
+            delimiter: " "
+          },
+          duration: 0,
+          ease: "none"
+        }).to(".project-title", {
+          opacity: 1,
+          duration: 0.75,
+          ease: "none"
+        });
+      },
+      onEnterBack: self => {
+        gsap.timeline().to(".project-title", {
+          text: {
+            value: project.id,
+            delimiter: " "
+          },
+          duration: 0,
+          ease: "none"
+        }).to(".project-title", {
+          opacity: 1,
+          duration: 0.75,
+          ease: "none"
+        });
+      },
+      onLeave: self => {
         gsap.to(".project-title", {
-          text: project.id,
+          opacity: 0,
+          duration: 0.25,
+          ease: "none"
+        });
+      },
+      onLeaveBack: self => {
+        gsap.to(".project-title", {
+          opacity: 0,
+          duration: 0.25,
           ease: "none"
         });
       }
+      // onUpdate: self => {
+      //   if (!self.isActive) {
+      //     gsap.to(".project-title", {
+      //       opacity: 0,
+      //       duration: 0.75,
+      //       ease: "none"
+      //     });
+      //   } else {
+      //     gsap.to(".project-title", {
+      //       opacity: 1,
+      //       duration: 0.75,
+      //       ease: "none"
+      //     });
+      //   }
+      // }
     });
   });
 
@@ -144,16 +205,6 @@ window.onload = () => {
       }
     }
   })
-
-  // let tTitle = new TimelineMax({
-  //   scrollTrigger: {
-  //     trigger: ".project-title",
-  //     start: "center center",
-  //     end: `center center-=${document.querySelector(".projects").offsetHeight}`,
-  //     pin: true,
-  //     markers: true
-  //   }
-  // })
 
   timelineMain.add(t1, t2, t4, tProjects, tIntro, tAbout);
   document.querySelector("body").style.overflowY = "scroll";
