@@ -285,9 +285,9 @@ body {
   position: sticky;
   display: flex;
   justify-content: flex-end;
-  align-items: center;
-  top: 0;
-  height: 100vh;
+  align-items: flex-end;
+  top: 20vh;
+  height: 80vh;
   margin-bottom: 15rem;
   z-index: 2;
   pointer-events: none; }
@@ -316,15 +316,15 @@ body {
   .projects .projects__element--image {
     transition: all 0.1s linear; }
   .projects #construct {
-    width: 44.4rem; }
+    width: 48.1rem; }
   .projects #rps {
-    width: 62.4rem; }
+    width: 67.6rem; }
   .projects #ecommerce {
-    width: 51.6rem; }
+    width: 55.9rem; }
   .projects #exodus_img {
-    width: 46.8rem; }
+    width: 50.7rem; }
   .projects #logos {
-    width: 39.6rem; }
+    width: 42.9rem; }
 
 .project {
   top: 0;
