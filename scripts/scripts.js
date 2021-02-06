@@ -177,21 +177,6 @@ window.onload = () => {
           ease: "none"
         });
       }
-      // onUpdate: self => {
-      //   if (!self.isActive) {
-      //     gsap.to(".project-title", {
-      //       opacity: 0,
-      //       duration: 0.75,
-      //       ease: "none"
-      //     });
-      //   } else {
-      //     gsap.to(".project-title", {
-      //       opacity: 1,
-      //       duration: 0.75,
-      //       ease: "none"
-      //     });
-      //   }
-      // }
     });
   });
 
