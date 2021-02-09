@@ -111,7 +111,7 @@
             <h1 class="intro__element intro__element--hide">and this is my portfolio</h1>
         </div>
     </div>
-    <nav class="nav">
+    <nav class="nav" id="nav">
         <h1 class="nav__element nav__element--name">mathew de vin</h1>
         <div class="links">
             <img class="links__element--about-img img-1" src="assets/images/aboutCircle.png"
@@ -126,15 +126,8 @@
             <p class="links__element">projects</p>
             <p class="links__element">contact me</p>
         </div>
-        <div class="logos">
-            <img class="logo__element" src="assets/images/canadaLogo.svg" alt="logo">
-            <img class="logo__element logo__element--self" src="assets/images/mdv.outline.svg" alt="logo">
-            <img class="logo__element" src="assets/images/sassLogo.svg" alt="logo">
-            <img class="logo__element" src="assets/images/reactLogo.svg" alt="logo">
-            <img class="logo__element" src="assets/images/affinityLogo.svg" alt="logo">
-        </div>
     </nav>
-    <div class="about">
+    <div class="about" id="about">
         <p class="about__element">
             Designer and Developer. Currently a student at the University of British Columbia
             pursuing a Bachelors in Computer Sciences. Located in the Okanagan.
@@ -154,10 +147,10 @@
     </div>
     <div class="projects">
         <div class="projects__element projects__element--group" id="constructed<br>images">
-            <a class="projects__element projects__element--link"
-               href="https://www.behance.net/gallery/112411015/Constructed-Images"
-               target="_blank"
-               rel="noopener noreferrer">
+            <a class="projects__element projects__element--link">
+<!--               href="https://www.behance.net/gallery/112411015/Constructed-Images"-->
+<!--               target="_blank"-->
+<!--               rel="noopener noreferrer">-->
                 <picture>
                     <source media="(min-width: 300px)"
                             srcset="assets/images/project_construct/project_construct_preview.png?nf_resize=fit&w=800">
@@ -170,10 +163,10 @@
             </a>
         </div>
         <div class="projects__element projects__element--group" id="rock<br>paper<br>scissors">
-            <a class="projects__element projects__element--link"
-               href="https://mdv-rock-paper-scissors.netlify.app/"
-               target="_blank"
-               rel="noopener noreferrer">
+            <a class="projects__element projects__element--link">
+<!--               href="https://mdv-rock-paper-scissors.netlify.app/"-->
+<!--               target="_blank"-->
+<!--               rel="noopener noreferrer">-->
                 <picture>
                     <source media="(min-width: 300px)"
                             srcset="assets/images/project_rps/project_rps_preview.png?nf_resize=fit&w=800">
@@ -186,10 +179,10 @@
             </a>
         </div>
         <div class="projects__element projects__element--group" id="ecommerce<br>website">
-            <a class="projects__element projects__element--link"
-               href="https://github.com/MtheDV/ubco-cosc304-project"
-               target="_blank"
-               rel="noopener noreferrer">
+            <a class="projects__element projects__element--link">
+<!--               href="https://github.com/MtheDV/ubco-cosc304-project"-->
+<!--               target="_blank"-->
+<!--               rel="noopener noreferrer">-->
                 <picture>
                     <source media="(min-width: 300px)"
                             srcset="assets/images/project_ecommerce/project_ecommerce_preview.png?nf_resize=fit&w=800">
@@ -202,10 +195,10 @@
             </a>
         </div>
         <div class="projects__element projects__element--group" id="exodus">
-            <a class="projects__element projects__element--link"
-               href="https://play.google.com/store/apps/details?id=com.platypi.exodus"
-               target="_blank"
-               rel="noopener noreferrer">
+            <a class="projects__element projects__element--link">
+<!--               href="https://play.google.com/store/apps/details?id=com.platypi.exodus"-->
+<!--               target="_blank"-->
+<!--               rel="noopener noreferrer">-->
                 <picture>
                     <source media="(min-width: 300px)"
                             srcset="assets/images/project_exodus/project_exodus_preview.png?nf_resize=fit&w=800">
@@ -232,6 +225,48 @@
                          alt="preview images of logo collection">
                 </picture>
             </a>
+        </div>
+    </div>
+    <div class="project-view">
+        <div class="project-view__exit">
+            <img class="project-view__exit-image" src="assets/images/exit.svg" alt="button to exit project view">
+        </div>
+        <h1 class="project-view__drag-text">drag</h1>
+        <div class="project-view__project" id="construct_view">
+            <a class="project-view__link" href="https://www.behance.net/gallery/112411015/Constructed-Images" target="_blank" rel="noopener noreferrer">behance</a>
+            <img class="project-view__image" src="assets/images/project_construct/slide1.jpg" alt="constructed images project slide 1">
+            <img class="project-view__image" src="assets/images/project_construct/slide2.jpg" alt="constructed images project slide 2">
+            <img class="project-view__image" src="assets/images/project_construct/slide3.jpg" alt="constructed images project slide 3">
+            <img class="project-view__image" src="assets/images/project_construct/slide4.jpg" alt="constructed images project slide 4">
+            <img class="project-view__image" src="assets/images/project_construct/slide5.jpg" alt="constructed images project slide 5">
+        </div>
+        <div class="project-view__project" id="rps_view">
+            <a class="project-view__link" href="https://mdv-rock-paper-scissors.netlify.app/" target="_blank" rel="noopener noreferrer">play rock paper scissors</a>
+            <img class="project-view__image" src="assets/images/project_rps/slide1.jpg" alt="rock paper scissors image project slide 1">
+            <img class="project-view__image" src="assets/images/project_rps/slide2.jpg" alt="rock paper scissors image project slide 2">
+            <img class="project-view__image" src="assets/images/project_rps/slide3.jpg" alt="rock paper scissors image project slide 3">
+        </div>
+        <div class="project-view__project" id="ecommerce_view">
+            <a class="project-view__link" href="https://github.com/MtheDV/ubco-cosc304-project" target="_blank" rel="noopener noreferrer">github</a>
+            <img class="project-view__image" src="assets/images/project_ecommerce/slide1.png" alt="ecommerce website image project slide 1">
+            <img class="project-view__image" src="assets/images/project_ecommerce/slide2.png" alt="ecommerce website image project slide 2">
+            <img class="project-view__image" src="assets/images/project_ecommerce/slide3.png" alt="ecommerce website image project slide 3">
+            <img class="project-view__image" src="assets/images/project_ecommerce/slide4.png" alt="ecommerce website image project slide 4">
+            <img class="project-view__image" src="assets/images/project_ecommerce/slide5.png" alt="ecommerce website image project slide 5">
+            <img class="project-view__image" src="assets/images/project_ecommerce/slide6.png" alt="ecommerce website image project slide 6">
+            <img class="project-view__image" src="assets/images/project_ecommerce/slide7.png" alt="ecommerce website image project slide 7">
+            <img class="project-view__image" src="assets/images/project_ecommerce/slide8.png" alt="ecommerce website image project slide 8">
+            <img class="project-view__image" src="assets/images/project_ecommerce/slide9.png" alt="ecommerce website image project slide 9">
+        </div>
+        <div class="project-view__project" id="exodus_img_view">
+            <a class="project-view__link" href="https://github.com/MtheDV/Exodus" target="_blank" rel="noopener noreferrer">github</a>
+            <img class="project-view__image" src="assets/images/project_exodus/slide1.jpg" alt="exodus image project slide 1">
+            <img class="project-view__image" src="assets/images/project_exodus/slide2.jpg" alt="exodus image project slide 2">
+            <img class="project-view__image" src="assets/images/project_exodus/slide3.jpg" alt="exodus image project slide 3">
+            <img class="project-view__image" src="assets/images/project_exodus/slide4.jpg" alt="exodus image project slide 4">
+            <img class="project-view__image" src="assets/images/project_exodus/slide5.jpg" alt="exodus image project slide 5">
+            <img class="project-view__image" src="assets/images/project_exodus/slide6.jpg" alt="exodus image project slide 6">
+            <img class="project-view__image" src="assets/images/project_exodus/slide7.jpg" alt="exodus image project slide 7">
         </div>
     </div>
     <div class="footer__background"></div>
@@ -266,6 +301,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollTrigger.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/TextPlugin.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollToPlugin.min.js"></script>
+<script src="scripts/CustomEase.min.js"></script>
+<script src="https://unpkg.com/scrollbooster@2/dist/scrollbooster.min.js"></script>
 <script src="scripts/scripts.js" defer></script>
 
 </body>

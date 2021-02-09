@@ -45,6 +45,23 @@ window.onload = () => {
     ease: "none"
   });
 
+  new ScrollTrigger({
+    trigger: ".parallax",
+    start: "bottom+=10 bottom",
+    end: "bottom+=20 bottom",
+    onEnter: () => {
+      if (window.scrollY <= window.innerHeight + 30) {
+        gsap.to(window, {
+          duration: 6,
+          scrollTo: {
+            y: "#about", offsetY: 300, autoKill: true
+          },
+          ease: CustomEase.create("custom", "M0,0 C0.194,0.214 0.272,0.338 0.424,0.39 0.603,0.451 0.714,0.768 1,1 ")
+        });
+      }
+    }
+  });
+
   let tIntro = new TimelineMax({
     scrollTrigger: {
       trigger: ".intro__content",
@@ -77,10 +94,6 @@ window.onload = () => {
   }).to(".links__element--about-img", {
     scale: 1,
     duration: 0.25
-  }).to(".logo__element", {
-    opacity: 1,
-    stagger: 1,
-    delay: 3
   });
 
   let tAbout = new TimelineMax({
@@ -125,16 +138,6 @@ window.onload = () => {
       trigger: project,
       start: "top center",
       end: "bottom center",
-      // onToggle: self => {
-      //   gsap.to(".project-title", {
-      //     text: {
-      //       value: project.id,
-      //       delimiter: " "
-      //     },
-      //     duration: 0.01,
-      //     ease: "none"
-      //   });
-      // },
       onEnter: self => {
         gsap.timeline().to(".project-title", {
           text: {
@@ -271,5 +274,53 @@ window.onload = () => {
       if (e.target.classList.contains("projects__element--image")) {
         skew(e);
       }
+  });
+
+  ///////////////////////////////////////
+  /////////// Project View //////////////
+  ///////////////////////////////////////
+  let scrollBooster = new ScrollBooster({
+    viewport: document.querySelector(".project-view"),
+    content: document.querySelector(".project-view__project"),
+    scrollMode: "transform",
+    direction: "horizontal",
+  });
+
+  let projectView = document.getElementsByClassName("project-view__project");
+  let projectsGroup = document.getElementsByClassName("projects__element--group");
+  let exitProjectButton = document.querySelector(".project-view__exit");
+  let projectViewOverall = document.querySelector(".project-view");
+  let body = document.querySelector("body");
+
+  const hideProjectView = () => {
+    projectViewOverall.style.display = "none";
+    projectViewOverall.style.opacity = "0";
+    body.style.overflowY = "scroll";
+    for (let j = 0; j < projectView.length; ++j) {
+      projectView[j].style.display = "none";
+    }
+  }
+
+  exitProjectButton.onclick = () => hideProjectView();
+
+  for (let i = 0; i < projectView.length; ++i) {
+    projectsGroup[i].onclick = () => {
+      hideProjectView();
+      body.style.overflowY = "hidden";
+      projectViewOverall.style.display = "grid";
+      projectViewOverall.style.opacity = "1";
+      projectView[i].style.display = "flex";
+      scrollBooster.updateOptions({ content: projectView[i] })
+      scrollBooster.updateMetrics();
+    }
+  }
+
+  let dragProjectText = document.querySelector(".project-view__drag-text");
+
+  window.addEventListener("mousemove", (e) => {
+    if (window.innerWidth >= 800) {
+      dragProjectText.style.top = e.clientY + "px";
+      dragProjectText.style.left = e.clientX + "px";
+    }
   });
 }

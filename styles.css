@@ -258,15 +258,6 @@ body {
       display: none; }
     .nav .links .img-4 {
       display: none; }
-  .nav .logos {
-    display: flex;
-    flex-direction: column-reverse;
-    margin-bottom: 3rem; }
-    .nav .logos .logo__element {
-      margin-top: 0.7rem;
-      align-self: flex-start;
-      width: 2rem;
-      opacity: 0; }
 
 .name_page {
   position: absolute;
@@ -298,10 +289,61 @@ body {
   width: 100%;
   opacity: 0; }
 
-.project-title-outline {
-  font-size: 10rem;
-  color: white;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; }
+.project-view {
+  display: none;
+  grid-template-columns: minmax(1rem, 1fr) [grid-s] repeat(12, minmax(2rem, 5rem)) [grid-e] minmax(1rem, 1fr);
+  grid-template-rows: 100vh;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  overflow-y: auto;
+  z-index: 10;
+  opacity: 0; }
+  .project-view .project-view__exit {
+    grid-column: 13 / 14;
+    grid-row: 1 / span 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    margin: 2rem 0 0 auto;
+    z-index: 2;
+    cursor: pointer; }
+    .project-view .project-view__exit:hover {
+      background-color: #4173FD; }
+    .project-view .project-view__exit .project-view__exit-image {
+      width: 3rem; }
+  .project-view .project-view__drag-text {
+    position: fixed;
+    font-size: 3rem;
+    top: 0;
+    left: 0;
+    z-index: 2; }
+  .project-view .project-view__project {
+    display: none;
+    flex-wrap: nowrap;
+    align-items: center;
+    cursor: grab;
+    height: 100vh; }
+    .project-view .project-view__project .project-view__link {
+      font-size: 3rem;
+      font-weight: bolder;
+      text-decoration: none;
+      white-space: nowrap;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      margin: 0 2rem;
+      color: #191919;
+      -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+      transform: rotate(180deg); }
+      .project-view .project-view__project .project-view__link:hover {
+        color: #4173FD; }
+    .project-view .project-view__project .project-view__image {
+      height: 75vh;
+      margin: 1rem 0.5rem; }
 
 .projects {
   display: flex;
@@ -315,6 +357,7 @@ body {
     margin: 8rem 0;
     perspective: 400px; }
   .projects .projects__element--image {
+    cursor: pointer;
     transition: all 0.1s linear; }
   .projects #construct {
     width: 48.1rem; }
@@ -326,56 +369,6 @@ body {
     width: 50.7rem; }
   .projects #logos {
     width: 42.9rem; }
-
-.project {
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  display: grid;
-  grid-template-columns: 1fr [grid-s] repeat(12, 5rem) [grid-e] 1fr;
-  grid-template-rows: auto auto auto;
-  grid-gap: 1.25rem;
-  justify-content: center;
-  width: 100vw;
-  height: 100vh; }
-  .project .project__back {
-    grid-column: grid-s / span 1;
-    grid-row: 1 / 1;
-    width: 3rem;
-    height: 3rem;
-    margin-top: 2rem;
-    margin-bottom: 4rem; }
-  .project .project__large_title {
-    position: absolute;
-    font-size: 29rem;
-    margin: 45rem 0 0 2rem;
-    white-space: nowrap;
-    color: #191919; }
-  .project .project__slides--info {
-    grid-column: grid-s / span 5;
-    grid-row: 2 / 2; }
-  .project .project__slides--images {
-    grid-row: 3 / 3;
-    grid-column: grid-s / span 5;
-    display: flex;
-    flex-wrap: wrap; }
-  .project .project__slides--image {
-    width: 100%; }
-  .project .project__slides--info {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column; }
-  .project .project__slides--info-title {
-    color: #191919;
-    font-size: 3rem;
-    margin: 0 0 2rem; }
-  .project .project__slides--info-text {
-    color: #191919;
-    font-size: 1.25rem;
-    line-height: 180%;
-    padding: 0 8rem 0 0; }
 
 .footer__background {
   background-color: #191919;
