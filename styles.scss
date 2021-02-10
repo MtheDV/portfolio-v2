@@ -313,7 +313,6 @@ $circle-width: 14rem;
   width: 100vw;
   overflow-y: auto;
   z-index: 10;
-  opacity: 0;
 
   .project-view__exit {
     grid-column: 13 / 14;
@@ -341,9 +340,10 @@ $circle-width: 14rem;
     top: 0;
     left: 0;
     z-index: 2;
+    pointer-events: none;
   }
   .project-view__project {
-    display: none;
+    display: flex;
     flex-wrap: nowrap;
     align-items: center;
     cursor: grab;
@@ -357,6 +357,7 @@ $circle-width: 14rem;
       text-orientation: mixed;
       margin: 0 2rem;
       color: $off-black;
+      cursor: pointer;
       @include transform(rotate(180deg));
       &:hover {
         color: $blue;

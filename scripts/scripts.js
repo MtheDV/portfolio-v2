@@ -290,11 +290,11 @@ window.onload = () => {
   let projectsGroup = document.getElementsByClassName("projects__element--group");
   let exitProjectButton = document.querySelector(".project-view__exit");
   let projectViewOverall = document.querySelector(".project-view");
+  let projectViewLinks = document.getElementsByClassName("project-view__link");
   let body = document.querySelector("body");
 
   const hideProjectView = () => {
     projectViewOverall.style.display = "none";
-    projectViewOverall.style.opacity = "0";
     body.style.overflowY = "scroll";
     for (let j = 0; j < projectView.length; ++j) {
       projectView[j].style.display = "none";
@@ -302,16 +302,30 @@ window.onload = () => {
   }
 
   exitProjectButton.onclick = () => hideProjectView();
+  exitProjectButton.ontouchstart = () => hideProjectView();
+
+  for (let i = 0; i < projectViewLinks.length; ++i) {
+    projectViewLinks[i].ontouchstart = () => {
+      window.open(projectViewLinks[i].href, "_blank");
+    }
+  }
+
+  const displayProjectView = (i) => {
+    hideProjectView();
+    body.style.overflowY = "hidden";
+    projectViewOverall.style.display = "grid";
+    projectViewOverall.style.pointerEvents = "all";
+    projectView[i].style.display = "flex";
+    scrollBooster.updateOptions({content: projectView[i]})
+    scrollBooster.updateMetrics();
+  }
 
   for (let i = 0; i < projectView.length; ++i) {
     projectsGroup[i].onclick = () => {
-      hideProjectView();
-      body.style.overflowY = "hidden";
-      projectViewOverall.style.display = "grid";
-      projectViewOverall.style.opacity = "1";
-      projectView[i].style.display = "flex";
-      scrollBooster.updateOptions({ content: projectView[i] })
-      scrollBooster.updateMetrics();
+      displayProjectView(i);
+    }
+    projectsGroup[i].ontouchstart = () => {
+      displayProjectView(i);
     }
   }
 
