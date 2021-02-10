@@ -538,33 +538,20 @@ $circle-width: 14rem;
     }
   }
 
-  .project {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto auto auto;
-    grid-gap: 0;
+  .project-view {
+    grid-template-columns: calc(100vw - 2rem);
     margin: 0 1rem;
 
-    .project__back {
+    .project-view__drag-text {
+      display: none;
+    }
+    .project-view__exit {
       grid-column: 1 / -1;
-      margin-top: 1rem;
-      margin-bottom: 2rem;
+      grid-row: 1 / span 1;
     }
-    .project__slides--left {
+    .project-view__project {
       grid-column: 1 / -1;
-      grid-row: 2 / span 1;
-    }
-    .project__slides--right {
-      grid-column: 1 / -1;
-      grid-row: 3 / span 1;
-    }
-    .project__slides {
-      margin-bottom: 1.25rem;
-    }
-    .project__slides--info-title {
-      margin: 2rem 1rem 1rem;
-    }
-    .project__slides--info-text {
-      padding: 0 1rem;
+      grid-row: 1 / span 1;
     }
   }
 
