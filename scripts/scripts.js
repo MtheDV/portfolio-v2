@@ -324,9 +324,6 @@ window.onload = () => {
     projectsGroup[i].onclick = () => {
       displayProjectView(i);
     }
-    projectsGroup[i].ontouchstart = () => {
-      displayProjectView(i);
-    }
   }
 
   let dragProjectText = document.querySelector(".project-view__drag-text");
