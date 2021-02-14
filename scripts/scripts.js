@@ -47,14 +47,14 @@ window.onload = () => {
 
   new ScrollTrigger({
     trigger: ".parallax",
-    start: "bottom+=10 bottom",
-    end: "bottom+=20 bottom",
-    onEnter: () => {
+    start: "center bottom",
+    end: "bottom+=50 bottom",
+    onLeave: () => {
       if (window.scrollY <= window.innerHeight + 30) {
         gsap.to(window, {
           duration: 6,
           scrollTo: {
-            y: "#about", offsetY: 300, autoKill: true
+            y: "#projects", offsetY: 150, autoKill: false
           },
           ease: CustomEase.create("custom", "M0,0 C0.194,0.214 0.272,0.338 0.424,0.39 0.603,0.451 0.714,0.768 1,1 ")
         });
@@ -80,7 +80,7 @@ window.onload = () => {
 
   let t2 = new TimelineMax({
     scrollTrigger: {
-      trigger: ".about",
+      trigger: ".projects",
       start: "top-=800 center",
       end: "top-=800 center-=700",
       scrub: true
@@ -118,18 +118,18 @@ window.onload = () => {
 
   let t4 = new TimelineMax({
     scrollTrigger: {
-      trigger: ".about",
+      trigger: ".projects",
       start: "top+=300 bottom",
-      end: `top+=300 bottom-=${document.querySelector(".projects").offsetHeight + document.querySelector(".about").offsetHeight} + 500`,
+      end: `top+=300 bottom-=${document.querySelector(".projects").offsetHeight + document.querySelector(".about").offsetHeight + 200}`,
       scrub: true
     }
   }).to(".links__element--about-img", {
     y: "+=2rem",
-    duration: 15
+    duration: 40
   }).to(".links__element--about-img", {
     y: "+=2rem",
     marginLeft: "+=0.5rem",
-    duration: 30
+    duration: 20
   });
 
   let projectArray = gsap.utils.toArray(".projects__element--group");
