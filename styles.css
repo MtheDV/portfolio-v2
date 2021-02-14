@@ -432,13 +432,13 @@ body {
       grid-row: 4 / span 1; }
     .grid-container .about {
       grid-column: 1 / -2;
-      grid-row: 5 / span 1; }
+      grid-row: 6 / span 1; }
     .grid-container .project-titles {
       grid-column: 1 / -1;
-      grid-row: 6 / span 1; }
+      grid-row: 5 / span 1; }
     .grid-container .projects {
       grid-column: 1 / -1;
-      grid-row: 6 / span 1; }
+      grid-row: 5 / span 1; }
     .grid-container .footer__background {
       grid-column: 1 / -1;
       grid-row: 7 / span 1; }
