@@ -24,43 +24,18 @@ window.onload = () => {
       opacity: 0,
       duration: 0.5,
       ease: "none"
+    }).to(".loading__logo", {
+      opacity: 0,
+      duration: 0.25,
+      ease: "none"
     }).to(".loading__bg", {
       width: "14rem",
       height: "14rem",
       borderRadius: "50%",
+      opacity: 0,
       duration: 0.75,
       ease: "circ"
     });
-
-  gsap.to(".parallax__element--circular-text-small", {
-    rotation: 360,
-    repeat: -1,
-    duration: 20,
-    ease: "none"
-  });
-  gsap.to(".parallax__element--circular-text-large", {
-    rotation: -360,
-    repeat: -1,
-    duration: 25,
-    ease: "none"
-  });
-
-  new ScrollTrigger({
-    trigger: ".parallax",
-    start: "center bottom",
-    end: "bottom+=50 bottom",
-    onLeave: () => {
-      if (window.scrollY <= window.innerHeight + 30) {
-        gsap.to(window, {
-          duration: 6,
-          scrollTo: {
-            y: "#projects", offsetY: 150, autoKill: false
-          },
-          ease: CustomEase.create("custom", "M0,0 C0.194,0.214 0.272,0.338 0.424,0.39 0.603,0.451 0.714,0.768 1,1 ")
-        });
-      }
-    }
-  });
 
   let tIntro = new TimelineMax({
     scrollTrigger: {
@@ -70,12 +45,10 @@ window.onload = () => {
       scrub: true,
       pin: true
     }
-  }).to(".intro__element--hide", {
+  }).to(".intro__element", {
     opacity: 0,
-    delay: 2
-  }).to(".intro__element--name", {
-    opacity: 0,
-    delay: 3
+    duration: 1,
+    delay: 5
   });
 
   let t2 = new TimelineMax({
@@ -160,41 +133,55 @@ window.onload = () => {
           },
           duration: 0,
           ease: "none"
-        }).to(".project-title", {
-          opacity: 1,
-          duration: 0.75,
-          ease: "none"
-        });
-      },
-      onLeave: self => {
-        gsap.to(".project-title", {
-          opacity: 0,
-          duration: 0.25,
-          ease: "none"
-        });
-      },
-      onLeaveBack: self => {
-        gsap.to(".project-title", {
-          opacity: 0,
-          duration: 0.25,
-          ease: "none"
         });
       }
     });
   });
 
-  let tProjects = new TimelineMax({
-    scrollTrigger: {
-      trigger: ".projects",
-      start: "top center",
-      end: "bottom-=300 center",
-      snap: {
-        snapTo: [0.11, 0.33, 0.56, 0.8, 1.0], duration: 0.25
-      }
+  ScrollTrigger.create({
+    trigger: ".projects",
+    start: "top center",
+    end: "bottom-=300 center",
+    snap: {
+      snapTo: [0.11, 0.33, 0.56, 0.8, 1.0], duration: 0.25
+    },
+    onEnter: self => {
+      gsap.to(".project-title", {
+        opacity: 1,
+        duration: 0.25,
+        ease: "none"
+      });
+    },
+    onLeaveBack: self => {
+      gsap.to(".project-title", {
+        opacity: 0,
+        duration: 0.25,
+        ease: "none"
+      });
     }
-  })
+  });
 
-  timelineMain.add(t1, t2, t4, tProjects, tIntro, tAbout);
+  ScrollTrigger.create({
+      trigger: ".projects",
+      start: "bottom center",
+      end: "bottom center",
+      onEnter: self => {
+        gsap.to(".project-title", {
+          opacity: 0,
+          duration: 0.25,
+          ease: "none"
+        });
+      },
+      onEnterBack: self => {
+        gsap.to(".project-title", {
+          opacity: 1,
+          duration: 0.25,
+          ease: "none"
+        });
+      }
+  });
+
+  timelineMain.add(t1, t2, t4, tIntro, tAbout);
   document.querySelector("body").style.overflowY = "scroll";
   timelineMain.play();
 
