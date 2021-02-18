@@ -29,9 +29,6 @@ window.onload = () => {
       duration: 0.25,
       ease: "none"
     }).to(".loading__bg", {
-      width: "14rem",
-      height: "14rem",
-      borderRadius: "50%",
       opacity: 0,
       duration: 0.75,
       ease: "circ"
@@ -45,10 +42,17 @@ window.onload = () => {
       scrub: true,
       pin: true
     }
-  }).to(".intro__element", {
+  }).to(".intro__content", {
     opacity: 0,
-    duration: 1,
-    delay: 5
+    duration: 5,
+    delay: 10
+  });
+
+  gsap.to(".intro__star", {
+    rotate: 360,
+    duration: 10,
+    repeat: -1,
+    ease: "none"
   });
 
   let t2 = new TimelineMax({

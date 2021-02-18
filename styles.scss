@@ -43,8 +43,8 @@ $blue: #4173FD;
           animation: $property;
 }
 @include keyframes(bounce) {
-  0%, 100% { @include transform(translateY(-1rem)) }
-  50% { @include transform(translateY(1rem)) }
+  0%, 100% { @include transform(translateY(-0.5rem)) }
+  50% { @include transform(translateY(0.5rem)) }
 }
 @mixin bounce {
   @include animate(bounce 2s infinite);
@@ -105,18 +105,6 @@ body {
   }
 }
 
-.scroll_arrow {
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  width: 3rem;
-  bottom: 3rem;
-  z-index: 5;
-  @include bounce;
-}
-
 .loading {
   position: absolute;
   top: 0; right: 0; bottom: 0; left: 0;
@@ -155,21 +143,38 @@ body {
 }
 
 .intro {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-content: center;
-  width: 50vw;
 
-  .intro__content {
-    padding: 0;
+  &__content {
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
   }
-
-  .intro__element {
+  &__elements {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
+  &__element {
     font-size: 3rem;
     white-space: nowrap;
     margin: 0;
   }
+  &__star {
+    width: 10rem;
+    margin-left: 2rem;
+  }
+}
+
+.scroll_arrow {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 3rem;
+  bottom: 20%;
+  z-index: 5;
+  @include bounce;
 }
 
 .nav {
@@ -177,7 +182,7 @@ body {
   top: 0;
   z-index: 5;
   height: 100vh;
-  margin-bottom: 7rem;
+  margin-bottom: 10rem;
 
   display: flex;
   flex-direction: column;
@@ -372,7 +377,7 @@ body {
 
 .footer__background {
   background-color: $off-black;
-  height: 7rem;
+  height: 10rem;
 }
 .footer {
   display: flex;
@@ -514,6 +519,9 @@ body {
   }
 }
 @media (max-width: 768px) {
+  .intro__star {
+    display: none;
+  }
   .nav {
     .nav__element--name {
       margin: 0;
