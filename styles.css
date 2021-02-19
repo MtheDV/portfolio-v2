@@ -65,7 +65,7 @@ body {
     grid-column: grid-s / grid-e;
     grid-row: 3 / span 1; }
   .grid-container .about {
-    grid-column: 4 / -5;
+    grid-column: 5 / -5;
     grid-row: 4 / span 1; }
   .grid-container .footer__background {
     grid-column: 1 / -1;
@@ -145,14 +145,14 @@ body {
   margin-bottom: 10rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; }
+  justify-content: space-between;
+  pointer-events: none; }
   .nav .nav__element--name {
     display: flex;
     justify-content: left;
     position: absolute;
     font-size: 3rem;
     opacity: 0;
-    pointer-events: none;
     white-space: nowrap;
     width: 100%; }
   .nav .links {
@@ -209,7 +209,7 @@ body {
   pointer-events: none; }
 
 .project-title {
-  font-size: 8rem;
+  font-size: 3rem;
   text-align: right;
   width: 100%;
   opacity: 0; }
@@ -221,7 +221,7 @@ body {
   align-items: center;
   justify-content: center;
   width: 100%;
-  margin: 30rem 0 10rem -7rem; }
+  margin: 30rem 0 10rem; }
   .projects .projects__element--group {
     margin: 8rem 0;
     perspective: 400px; }
@@ -229,15 +229,15 @@ body {
     cursor: pointer;
     transition: all 0.1s linear; }
   .projects #construct {
-    width: 48.1rem; }
+    width: 44.4rem; }
   .projects #rps {
-    width: 67.6rem; }
+    width: 62.4rem; }
   .projects #ecommerce {
-    width: 55.9rem; }
+    width: 51.6rem; }
   .projects #exodus_img {
-    width: 50.7rem; }
+    width: 46.8rem; }
   .projects #logos {
-    width: 42.9rem; }
+    width: 39.6rem; }
 
 .project-view {
   display: none;
