@@ -11,6 +11,16 @@ ScrollTrigger.defaults({
   markers: false
 });
 
+gsap.timeline().to(".loading__screen", {
+  opacity: 0,
+  duration: 1,
+  ease: "none"
+}).to("main", {
+  opacity: 1,
+  duration: 1,
+  ease: "none"
+});
+
 /* SWUP */
 const options = [
   {

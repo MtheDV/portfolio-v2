@@ -36,9 +36,37 @@
     <!-- Pinterest -->
     <meta name="pinterest" content="nopin">
 
+    <style>
+        .loading__screen {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .loading__star {
+            width: 5rem;
+            height: 5rem;
+        }
+        .loading__text {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        main {
+            opacity: 0;
+        }
+    </style>
     <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+
+<div class="loading__screen">
+    <img class="loading__star" src="assets/images/star--red.svg" alt="red star with a smiling face inside">
+    <p class="loading__text">loading</p>
+</div>
 
 <main id="swup" data-type="project">
 
