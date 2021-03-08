@@ -1,31 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap");
-@-webkit-keyframes bounce {
-  0%, 100% {
-    -webkit-transform: translateY(-0.5rem);
-    -ms-transform: translateY(-0.5rem);
-    transform: translateY(-0.5rem); }
-  50% {
-    -webkit-transform: translateY(0.5rem);
-    -ms-transform: translateY(0.5rem);
-    transform: translateY(0.5rem); } }
-@-o-keyframes bounce {
-  0%, 100% {
-    -webkit-transform: translateY(-0.5rem);
-    -ms-transform: translateY(-0.5rem);
-    transform: translateY(-0.5rem); }
-  50% {
-    -webkit-transform: translateY(0.5rem);
-    -ms-transform: translateY(0.5rem);
-    transform: translateY(0.5rem); } }
-@keyframes bounce {
-  0%, 100% {
-    -webkit-transform: translateY(-0.5rem);
-    -ms-transform: translateY(-0.5rem);
-    transform: translateY(-0.5rem); }
-  50% {
-    -webkit-transform: translateY(0.5rem);
-    -ms-transform: translateY(0.5rem);
-    transform: translateY(0.5rem); } }
 * {
   font-size: 16px; }
 
@@ -238,11 +211,14 @@ h1 {
     font-size: 18px; } }
 @media (max-width: 1380px) {
   .container {
-    grid-template-columns: 1fr [content-s] repeat(8, 6rem) [content-e] 1fr; }
-
+    grid-template-columns: 1fr [content-s] repeat(8, 6rem) [content-e] 1fr; } }
+@media (max-width: 1380px) and (orientation: landscape) {
   .intro {
-    height: auto; }
-
+    height: auto; } }
+@media (max-width: 1380px) and (orientation: portrait) {
+  .intro {
+    height: 100vh; } }
+@media (max-width: 1380px) {
   .about {
     grid-column: 3 / -3;
     grid-row: 3 / 3; }

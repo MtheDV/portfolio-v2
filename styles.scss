@@ -27,36 +27,6 @@ $blue: #4173FD;
   transform-origin: $property1 $property2;
 }
 
-@mixin keyframes($animation) {
-  @-webkit-keyframes #{$animation} {
-    @content;
-  }
-  @-o-keyframes #{$animation} {
-    @content;
-  }
-  @keyframes #{$animation} {
-    @content;
-  }
-}
-
-@mixin animate($property) {
-  -webkit-animation: $property;
-  animation: $property;
-}
-
-@include keyframes(bounce) {
-  0%, 100% {
-    @include transform(translateY(-0.5rem))
-  }
-  50% {
-    @include transform(translateY(0.5rem))
-  }
-}
-
-@mixin bounce {
-  @include animate(bounce 2s infinite);
-}
-
 * {
   font-size: 16px;
 }
@@ -356,8 +326,15 @@ h1 {
     grid-template-columns: 1fr [content-s] repeat(8, 6rem) [content-e] 1fr;
   }
 
-  .intro {
-    height: auto;
+  @media (orientation: landscape) {
+    .intro {
+      height: auto;
+    }
+  }
+  @media (orientation: portrait) {
+    .intro {
+      height: 100vh;
+    }
   }
 
   .about {
