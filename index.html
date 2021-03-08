@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1">
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1">
     <meta name=”robots” content=”index”>
 
     <!-- Main Tags -->
@@ -12,9 +12,9 @@
           content="Hello my name is Mathew de Vin! Designer and developer. This is my portfolio where you can get a small glimpse of what I do">
 
     <!-- Icons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/icon.gif">
+    <link rel="icon" type="image/gif" sizes="32x32" href="/assets/images/icon.gif">
+    <link rel="icon" type="image/gif" sizes="16x16" href="/assets/images/icon.gif">
     <link rel="manifest" href="/site.webmanifest">
 
     <!-- Open Graph / Facebook -->
@@ -33,401 +33,131 @@
           content="Hello my name is Mathew de Vin! Designer and developer. This is my portfolio where you can get a small glimpse of who I am and what I do">
     <meta property="twitter:image" content="/assets/images/screenshot.jpg">
 
+    <!-- Pinterest -->
+    <meta name="pinterest" content="nopin">
+
     <link rel="stylesheet" href="/styles.css">
-    <link rel="preload" href="assets/images/mdv.outline.svg" as="image">
-    <link rel="preload" href="assets/images/loading.svg" as="image">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 </head>
 <body>
-<div class="loading">
-    <div class="loading__element loading__bg"></div>
-    <img class="loading__element loading__circle" src="assets/images/loading.svg" alt="circle loading animation">
-    <img class="loading__element loading__logo" src="assets/images/parallax/mdv.outline.svg" alt="logo">
-</div>
 
-<div class="grid-container">
-    <div class="scroll">
-        <svg class="scroll_arrow" width="67" height="39" viewBox="0 0 67 39" fill="none"
-            xmlns="http://www.w3.org/2000/svg">
-            <path d="M3 3L33.5 33.5L64 3" stroke="#191919" stroke-width="7"/>
-        </svg>
+<main id="swup" data-type="home">
+
+    <div class="container">
+        <img class="star" src="assets/images/star.svg" alt="blue star with a smiling face inside">
+        <div class="intro">
+            <h1 class="intro__title">hi im<br>mathew de vin<br>web developer and designer</h1>
+        </div>
+        <img class="arrow" src="assets/images/arrow.svg" alt="black arrow pointing down">
+
+        <div class="projects">
+            <div class="projects__group">
+                <a class="projects__link" href="/constructed.html"
+                   aria-label="go to the constructed images project page">
+                    <picture>
+                        <source media="(min-width: 300px)"
+                                srcset="assets/images/project_construct/project_construct_preview.png?nf_resize=fit&w=800">
+                        <source media="(min-width: 0px)"
+                                srcset="assets/images/project_construct/project_construct_preview.png?nf_resize=fit&w=300">
+                        <img class="projects__image construct" id="constructed images"
+                             src="assets/images/project_construct/project_construct_preview.png?nf_resize=fit&w=1"
+                             alt="preview images of construct project">
+                    </picture>
+                </a>
+            </div>
+            <h2 class="projects__title">constructed images</h2>
+            <div class="projects__group">
+                <a class="projects__link" href="/rockpaperscissors.html"
+                   aria-label="go to the rock paper scissors project page">
+                    <picture>
+                        <source media="(min-width: 300px)"
+                                srcset="assets/images/project_rps/project_rps_preview.png?nf_resize=fit&w=800">
+                        <source media="(min-width: 0px)"
+                                srcset="assets/images/project_rps/project_rps_preview.png?nf_resize=fit&w=300">
+                        <img class="projects__image rps" id="rock paper scissors game"
+                             src="assets/images/project_rps/project_rps_preview.png?nf_resize=fit&w=1"
+                             alt="preview images of rock paper scissors project">
+                    </picture>
+                </a>
+            </div>
+            <h2 class="projects__title">rock paper scissors</h2>
+            <div class="projects__group">
+                <a class="projects__link" href="/ecommerce.html" aria-label="go to the ecommerce project page">
+                    <picture>
+                        <source media="(min-width: 300px)"
+                                srcset="assets/images/project_ecommerce/project_ecommerce_preview.png?nf_resize=fit&w=800">
+                        <source media="(min-width: 0px)"
+                                srcset="assets/images/project_ecommerce/project_ecommerce_preview.png?nf_resize=fit&w=300">
+                        <img class="projects__image ecommerce" id="ecommerce website"
+                             src="assets/images/project_ecommerce/project_ecommerce_preview.png?nf_resize=fit&w=1"
+                             alt="preview images of ecommerce project">
+                    </picture>
+                </a>
+            </div>
+            <h2 class="projects__title">electric car ecommerce website</h2>
+            <div class="projects__group">
+                <a class="projects__link" href="/exodus.html" aria-label="go to the exodus platformer project page">
+                    <picture>
+                        <source media="(min-width: 300px)"
+                                srcset="assets/images/project_exodus/project_exodus_preview.png?nf_resize=fit&w=800">
+                        <source media="(min-width: 0px)"
+                                srcset="assets/images/project_exodus/project_exodus_preview.png?nf_resize=fit&w=300">
+                        <img class="projects__image exodus" id="exodus"
+                             src="assets/images/project_exodus/project_exodus_preview.png?nf_resize=fit&w=1"
+                             alt="preview images of exodus platformer project">
+                    </picture>
+                </a>
+            </div>
+            <h2 class="projects__title">exodus</h2>
+        </div>
+
+        <div class="about">
+            <h2 class="about__title">about me</h2>
+            <p class="about__paragraph">
+                Web developer and designer. Currently a student at the University of British Columbia
+                pursuing a Bachelors in Computer Sciences. Located in the Okanagan.
+            </p>
+            <p class="about__paragraph">
+                Although I’m constantly learning as a student, I’ve gained web development skills in
+                HTML5, CSS (SASS), JavaScript, React. Alongside minor knowledge in backend development languages NodeJS,
+                ExpressJS, Java Server Pages (JSP), SQL, noSQL. With skills also in Java and Python development.
+            </p>
+            <p class="about__paragraph">
+                Design skills developed using the Affinity Toolset (Photo, Designer, and Publisher)
+                and Figma alongside minor knowledge with the Adobe Toolset (Photoshop and Illustrator).
+            </p>
+        </div>
+        <div class="footer__background"></div>
+        <footer class="footer">
+            <h2 class="title">want to work with me?</h2>
+            <div class="stars">
+                <img class="star" src="assets/images/star.svg" alt="blue star with a smiling face inside">
+                <img class="star" src="assets/images/star--green.svg" alt="green star with a smiling face inside">
+                <img class="star" src="assets/images/star--yellow.svg" alt="yellow star with a smiling face inside">
+                <img class="star" src="assets/images/star--red.svg" alt="red star with a smiling face inside">
+            </div>
+            <div class="links">
+                <a class="link" href="mailto:mathewdevin03@gmail.com"
+                   target="_blank"
+                   rel="noopener noreferrer" aria-label="email">let's begin.</a>
+                <a class="link" href="https://www.linkedin.com/in/mathew-de-vin/"
+                   target="_blank"
+                   rel="noopener noreferrer" aria-label="linked in">linked in</a>
+                <a class="link" href="https://github.com/MtheDV"
+                   target="_blank"
+                   rel="noopener noreferrer" aria-label="instagram">github</a>
+            </div>
+        </footer>
     </div>
 
-    <div class="intro">
-        <div class="intro__content">
-            <div class="intro__elements">
-                <h1 class="intro__element">hi im </h1>
-                <h1 class="intro__element">mathew de vin</h1>
-                <h1 class="intro__element">designer and developer</h1>
-            </div>
-            <img class="intro__star" src="assets/images/star.svg" alt="blue star with an exclamation mark inside">
-        </div>
-    </div>
-    <nav class="nav" id="nav">
-        <h1 class="nav__element nav__element--name">mathew de vin</h1>
-        <div class="links">
-            <img class="links__element--about-img img-1" src="assets/images/aboutCircle.png"
-                 alt="triangle patterned circle">
-            <img class="links__element--about-img img-2" src="assets/images/aboutCircle2.png"
-                 alt="triangle patterned circle">
-            <img class="links__element--about-img img-3" src="assets/images/aboutCircle3.png"
-                 alt="triangle patterned circle">
-            <img class="links__element--about-img img-4" src="assets/images/aboutCircle4.png"
-                 alt="triangle patterned circle">
-            <p class="links__element">projects</p>
-            <p class="links__element">about</p>
-            <p class="links__element">contact me</p>
-        </div>
-    </nav>
-    <div class="about" id="about">
-        <p class="about__element">
-            Designer and Developer. Currently a student at the University of British Columbia
-            pursuing a Bachelors in Computer Sciences. Located in the Okanagan.
-        </p>
-        <p class="about__element">
-            Although I’m constantly learning as a student, I’ve gained web development skills in
-            HTML5, CSS (SASS), JavaScript, React. Alongside backend development languages NodeJS, ExpressJS, Java Server
-            Pages (JSP), SQL, noSQL. With skills also in Java and some Python development.
-        </p>
-        <p class="about__element">
-            Design skills developed using the Affinity Toolset (Photo, Designer, and Publisher)
-            and Figma alongside minor knowledge with the Adobe Toolset (Photoshop and Illustrator).
-        </p>
-    </div>
-    <div class="project-titles no-z-index-change" id="0.01_0.01_0_0">
-        <h1 class="project-title">constructed images</h1>
-    </div>
-    <div class="projects" id="projects">
-        <div class="projects__element projects__element--group" id="constructed images">
-            <a class="projects__element projects__element--link">
-                <!--               href="https://www.behance.net/gallery/112411015/Constructed-Images"-->
-                <!--               target="_blank"-->
-                <!--               rel="noopener noreferrer">-->
-                <picture>
-                    <source media="(min-width: 300px)"
-                            srcset="assets/images/project_construct/project_construct_preview.png?nf_resize=fit&w=800">
-                    <source media="(min-width: 0px)"
-                            srcset="assets/images/project_construct/project_construct_preview.png?nf_resize=fit&w=300">
-                    <img class="projects__element projects__element--image" id="construct"
-                         src="assets/images/project_construct/project_construct_preview.png?nf_resize=fit&w=1"
-                         alt="preview images of construct project">
-                </picture>
-            </a>
-        </div>
-        <div class="projects__element projects__element--group" id="rock paper scissors">
-            <a class="projects__element projects__element--link">
-                <!--               href="https://mdv-rock-paper-scissors.netlify.app/"-->
-                <!--               target="_blank"-->
-                <!--               rel="noopener noreferrer">-->
-                <picture>
-                    <source media="(min-width: 300px)"
-                            srcset="assets/images/project_rps/project_rps_preview.png?nf_resize=fit&w=800">
-                    <source media="(min-width: 0px)"
-                            srcset="assets/images/project_rps/project_rps_preview.png?nf_resize=fit&w=300">
-                    <img class="projects__element projects__element--image" id="rps"
-                         src="assets/images/project_rps/project_rps_preview.png?nf_resize=fit&w=1"
-                         alt="preview images of rock paper scissors project">
-                </picture>
-            </a>
-        </div>
-        <div class="projects__element projects__element--group" id="ecommerce website">
-            <a class="projects__element projects__element--link">
-                <!--               href="https://github.com/MtheDV/ubco-cosc304-project"-->
-                <!--               target="_blank"-->
-                <!--               rel="noopener noreferrer">-->
-                <picture>
-                    <source media="(min-width: 300px)"
-                            srcset="assets/images/project_ecommerce/project_ecommerce_preview.png?nf_resize=fit&w=800">
-                    <source media="(min-width: 0px)"
-                            srcset="assets/images/project_ecommerce/project_ecommerce_preview.png?nf_resize=fit&w=300">
-                    <img class="projects__element projects__element--image" id="ecommerce"
-                         src="assets/images/project_ecommerce/project_ecommerce_preview.png?nf_resize=fit&w=1"
-                         alt="preview images of ecommerce project">
-                </picture>
-            </a>
-        </div>
-        <div class="projects__element projects__element--group" id="exodus">
-            <a class="projects__element projects__element--link">
-                <!--               href="https://play.google.com/store/apps/details?id=com.platypi.exodus"-->
-                <!--               target="_blank"-->
-                <!--               rel="noopener noreferrer">-->
-                <picture>
-                    <source media="(min-width: 300px)"
-                            srcset="assets/images/project_exodus/project_exodus_preview.png?nf_resize=fit&w=800">
-                    <source media="(min-width: 0px)"
-                            srcset="assets/images/project_exodus/project_exodus_preview.png?nf_resize=fit&w=300">
-                    <img class="projects__element projects__element--image" id="exodus_img"
-                         src="assets/images/project_exodus/project_exodus_preview.png?nf_resize=fit&w=1"
-                         alt="preview images of exodus platformer project">
-                </picture>
-            </a>
-        </div>
-        <div class="projects__element projects__element--group" id="logo collection">
-            <a class="projects__element projects__element--link"
-               href="https://www.behance.net/mathewdevin"
-               target="_blank"
-               rel="noopener noreferrer">
-                <picture>
-                    <source media="(min-width: 300px)"
-                            srcset="assets/images/project_logos/project_logos_preview.png?nf_resize=fit&w=800">
-                    <source media="(min-width: 0px)"
-                            srcset="assets/images/project_logos/project_logos_preview.png?nf_resize=fit&w=300">
-                    <img class="projects__element projects__element--image" id="logos"
-                         src="assets/images/project_logos/project_logos_preview.png?nf_resize=fit&w=1"
-                         alt="preview images of logo collection">
-                </picture>
-            </a>
-        </div>
-    </div>
-    <div class="project-view">
-        <div class="project-view__exit">
-            <img class="project-view__exit-image" src="assets/images/exit.svg" alt="button to exit project view">
-        </div>
-        <h1 class="project-view__drag-text">drag</h1>
-        <div class="project-view__project" id="construct_view">
-            <a class="project-view__link" href="https://www.behance.net/gallery/112411015/Constructed-Images"
-               target="_blank" rel="noopener noreferrer">behance</a>
-            <picture>
-                <source media="(min-width: 300px)"
-                        srcset="assets/images/project_construct/slide1.jpg?nf_resize=fit&h=800">
-                <source media="(min-width: 0px)"
-                        srcset="assets/images/project_construct/slide1.jpg?nf_resize=fit&h=600">
-                <img class="project-view__image" src="assets/images/project_construct/slide1.jpg?nf_resize=fit&h=1"
-                     alt="constructed images project slide 1">
-            </picture>
-            <picture>
-                <source media="(min-width: 300px)"
-                        srcset="assets/images/project_construct/slide2.jpg?nf_resize=fit&h=800">
-                <source media="(min-width: 0px)"
-                        srcset="assets/images/project_construct/slide2.jpg?nf_resize=fit&h=600">
-                <img class="project-view__image" src="assets/images/project_construct/slide2.jpg?nf_resize=fit&h=1"
-                     alt="constructed images project slide 2">
-            </picture>
-            <picture>
-                <source media="(min-width: 300px)"
-                        srcset="assets/images/project_construct/slide3.jpg?nf_resize=fit&h=800">
-                <source media="(min-width: 0px)"
-                        srcset="assets/images/project_construct/slide3.jpg?nf_resize=fit&h=600">
-                <img class="project-view__image" src="assets/images/project_construct/slide3.jpg?nf_resize=fit&h=1"
-                     alt="constructed images project slide 3">
-            </picture>
-            <picture>
-                <source media="(min-width: 300px)"
-                        srcset="assets/images/project_construct/slide4.jpg?nf_resize=fit&h=800">
-                <source media="(min-width: 0px)"
-                        srcset="assets/images/project_construct/slide4.jpg?nf_resize=fit&h=600">
-                <img class="project-view__image" src="assets/images/project_construct/slide4.jpg?nf_resize=fit&h=1"
-                     alt="constructed images project slide 4">
-            </picture>
-            <picture>
-                <source media="(min-width: 300px)"
-                        srcset="assets/images/project_construct/slide5.jpg?nf_resize=fit&h=800">
-                <source media="(min-width: 0px)"
-                        srcset="assets/images/project_construct/slide5.jpg?nf_resize=fit&h=600">
-                <img class="project-view__image" src="assets/images/project_construct/slide5.jpg?nf_resize=fit&h=1"
-                     alt="constructed images project slide 5">
-            </picture>
-        </div>
-        <div class="project-view__project" id="rps_view">
-            <a class="project-view__link" href="https://mdv-rock-paper-scissors.netlify.app/" target="_blank"
-               rel="noopener noreferrer">play rock paper scissors</a>
-            <picture>
-                <source media="(min-width: 300px)"
-                        srcset="assets/images/project_rps/slide1.jpg?nf_resize=fit&h=800">
-                <source media="(min-width: 0px)"
-                        srcset="assets/images/project_rps/slide1.jpg?nf_resize=fit&h=600">
-                <img class="project-view__image" src="assets/images/project_rps/slide1.jpg?nf_resize=fit&h=1"
-                     alt="rock paper scissors image project slide 1">
-            </picture>
-            <picture>
-                <source media="(min-width: 300px)"
-                        srcset="assets/images/project_rps/slide2.jpg?nf_resize=fit&h=800">
-                <source media="(min-width: 0px)"
-                        srcset="assets/images/project_rps/slide2.jpg?nf_resize=fit&h=600">
-                <img class="project-view__image" src="assets/images/project_rps/slide2.jpg?nf_resize=fit&h=1"
-                     alt="rock paper scissors image project slide 2">
-            </picture>
-            <picture>
-                <source media="(min-width: 300px)"
-                        srcset="assets/images/project_rps/slide3.jpg?nf_resize=fit&h=800">
-                <source media="(min-width: 0px)"
-                        srcset="assets/images/project_rps/slide3.jpg?nf_resize=fit&h=600">
-                <img class="project-view__image" src="assets/images/project_rps/slide3.jpg?nf_resize=fit&h=1"
-                     alt="rock paper scissors image project slide 3">
-            </picture>
-        </div>
-        <div class="project-view__project" id="ecommerce_view">
-            <a class="project-view__link" href="https://github.com/MtheDV/ubco-cosc304-project" target="_blank"
-               rel="noopener noreferrer">github</a>
-            <picture>
-                <source media="(min-width: 300px)"
-                        srcset="assets/images/project_ecommerce/slide1.png?nf_resize=fit&h=800">
-                <source media="(min-width: 0px)"
-                        srcset="assets/images/project_ecommerce/slide1.png?nf_resize=fit&h=600">
-                <img class="project-view__image" src="assets/images/project_ecommerce/slide1.png?nf_resize=fit&h=1"
-                     alt="ecommerce website image project slide 1">
-            </picture>
-            <picture>
-                <source media="(min-width: 300px)"
-                        srcset="assets/images/project_ecommerce/slide2.png?nf_resize=fit&h=800">
-                <source media="(min-width: 0px)"
-                        srcset="assets/images/project_ecommerce/slide2.png?nf_resize=fit&h=600">
-                <img class="project-view__image" src="assets/images/project_ecommerce/slide2.png?nf_resize=fit&h=1"
-                     alt="ecommerce website image project slide 2">
-            </picture>
-            <picture>
-                <source media="(min-width: 300px)"
-                        srcset="assets/images/project_ecommerce/slide3.png?nf_resize=fit&h=800">
-                <source media="(min-width: 0px)"
-                        srcset="assets/images/project_ecommerce/slide3.png?nf_resize=fit&h=600">
-                <img class="project-view__image" src="assets/images/project_ecommerce/slide3.png?nf_resize=fit&h=1"
-                     alt="ecommerce website image project slide 3">
-            </picture>
-            <picture>
-                <source media="(min-width: 300px)"
-                        srcset="assets/images/project_ecommerce/slide4.png?nf_resize=fit&h=800">
-                <source media="(min-width: 0px)"
-                        srcset="assets/images/project_ecommerce/slide4.png?nf_resize=fit&h=600">
-                <img class="project-view__image" src="assets/images/project_ecommerce/slide4.png?nf_resize=fit&h=1"
-                     alt="ecommerce website image project slide 4">
-            </picture>
-            <picture>
-                <source media="(min-width: 300px)"
-                        srcset="assets/images/project_ecommerce/slide5.png?nf_resize=fit&h=800">
-                <source media="(min-width: 0px)"
-                        srcset="assets/images/project_ecommerce/slide5.png?nf_resize=fit&h=600">
-                <img class="project-view__image" src="assets/images/project_ecommerce/slide5.png?nf_resize=fit&h=1"
-                     alt="ecommerce website image project slide 5">
-            </picture>
-            <picture>
-                <source media="(min-width: 300px)"
-                        srcset="assets/images/project_ecommerce/slide6.png?nf_resize=fit&h=800">
-                <source media="(min-width: 0px)"
-                        srcset="assets/images/project_ecommerce/slide6.png?nf_resize=fit&h=600">
-                <img class="project-view__image" src="assets/images/project_ecommerce/slide6.png?nf_resize=fit&h=1"
-                     alt="ecommerce website image project slide 6">
-            </picture>
-            <picture>
-                <source media="(min-width: 300px)"
-                        srcset="assets/images/project_ecommerce/slide7.png?nf_resize=fit&h=800">
-                <source media="(min-width: 0px)"
-                        srcset="assets/images/project_ecommerce/slide7.png?nf_resize=fit&h=600">
-                <img class="project-view__image" src="assets/images/project_ecommerce/slide7.png?nf_resize=fit&h=1"
-                     alt="ecommerce website image project slide 7">
-            </picture>
-            <picture>
-                <source media="(min-width: 300px)"
-                        srcset="assets/images/project_ecommerce/slide8.png?nf_resize=fit&h=800">
-                <source media="(min-width: 0px)"
-                        srcset="assets/images/project_ecommerce/slide8.png?nf_resize=fit&h=600">
-                <img class="project-view__image" src="assets/images/project_ecommerce/slide8.png?nf_resize=fit&h=1"
-                     alt="ecommerce website image project slide 8">
-            </picture>
-            <picture>
-                <source media="(min-width: 300px)"
-                        srcset="assets/images/project_ecommerce/slide9.png?nf_resize=fit&h=800">
-                <source media="(min-width: 0px)"
-                        srcset="assets/images/project_ecommerce/slide9.png?nf_resize=fit&h=600">
-                <img class="project-view__image" src="assets/images/project_ecommerce/slide9.png?nf_resize=fit&h=1"
-                     alt="ecommerce website image project slide 9">
-            </picture>
-        </div>
-        <div class="project-view__project" id="exodus_img_view">
-            <a class="project-view__link" href="https://github.com/MtheDV/Exodus" target="_blank"
-               rel="noopener noreferrer">github</a>
-            <picture>
-                <source media="(min-width: 300px)"
-                        srcset="assets/images/project_exodus/slide1.jpg?nf_resize=fit&h=800">
-                <source media="(min-width: 0px)"
-                        srcset="assets/images/project_exodus/slide1.jpg?nf_resize=fit&h=600">
-                <img class="project-view__image" src="assets/images/project_exodus/slide1.jpg?nf_resize=fit&h=1"
-                     alt="exodus image project slide 1">
-            </picture>
-            <picture>
-                <source media="(min-width: 300px)"
-                        srcset="assets/images/project_exodus/slide2.jpg?nf_resize=fit&h=800">
-                <source media="(min-width: 0px)"
-                        srcset="assets/images/project_exodus/slide2.jpg?nf_resize=fit&h=600">
-                <img class="project-view__image" src="assets/images/project_exodus/slide2.jpg?nf_resize=fit&h=1"
-                     alt="exodus image project slide 2">
-            </picture>
-            <picture>
-                <source media="(min-width: 300px)"
-                        srcset="assets/images/project_exodus/slide3.jpg?nf_resize=fit&h=800">
-                <source media="(min-width: 0px)"
-                        srcset="assets/images/project_exodus/slide3.jpg?nf_resize=fit&h=600">
-                <img class="project-view__image" src="assets/images/project_exodus/slide3.jpg?nf_resize=fit&h=1"
-                     alt="exodus image project slide 3">
-            </picture>
-            <picture>
-                <source media="(min-width: 300px)"
-                        srcset="assets/images/project_exodus/slide4.jpg?nf_resize=fit&h=800">
-                <source media="(min-width: 0px)"
-                        srcset="assets/images/project_exodus/slide4.jpg?nf_resize=fit&h=600">
-                <img class="project-view__image" src="assets/images/project_exodus/slide4.jpg?nf_resize=fit&h=1"
-                     alt="exodus image project slide 4">
-            </picture>
-            <picture>
-                <source media="(min-width: 300px)"
-                        srcset="assets/images/project_exodus/slide5.jpg?nf_resize=fit&h=800">
-                <source media="(min-width: 0px)"
-                        srcset="assets/images/project_exodus/slide5.jpg?nf_resize=fit&h=600">
-                <img class="project-view__image" src="assets/images/project_exodus/slide5.jpg?nf_resize=fit&h=1"
-                     alt="exodus image project slide 5">
-            </picture>
-            <picture>
-                <source media="(min-width: 300px)"
-                        srcset="assets/images/project_exodus/slide6.jpg?nf_resize=fit&h=800">
-                <source media="(min-width: 0px)"
-                        srcset="assets/images/project_exodus/slide6.jpg?nf_resize=fit&h=600">
-                <img class="project-view__image" src="assets/images/project_exodus/slide6.jpg?nf_resize=fit&h=1"
-                     alt="exodus image project slide 6">
-            </picture>
-            <picture>
-                <source media="(min-width: 300px)"
-                        srcset="assets/images/project_exodus/slide7.jpg?nf_resize=fit&h=800">
-                <source media="(min-width: 0px)"
-                        srcset="assets/images/project_exodus/slide7.jpg?nf_resize=fit&h=600">
-                <img class="project-view__image" src="assets/images/project_exodus/slide7.jpg?nf_resize=fit&h=1"
-                     alt="exodus image project slide 7">
-            </picture>
-        </div>
-    </div>
-    <div class="footer__background"></div>
-    <footer class="footer">
-        <h1>want to work with me?</h1>
-        <div class="footer__element footer__element--links">
-            <div class="footer__element footer__element--circle-link">
-                <img class="footer__element footer__element--image-circle" src="assets/images/beginCircle.png"
-                     alt="circle surrounding text">
-                <a class="footer__element footer__element--link" href="mailto:mathewdevin03@gmail.com">let's
-                    begin.</a>
-            </div>
-            <a class="footer__element footer__element--link" href="https://www.linkedin.com/in/mathew-de-vin/"
-               target="_blank"
-               rel="noopener noreferrer">linked in</a>
-            <a class="footer__element footer__element--link" href="https://www.instagram.com/mathew_dv/"
-               target="_blank"
-               rel="noopener noreferrer">instagram</a>
-        </div>
-    </footer>
-</div>
+</main>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
-<script>
-  gsap.to(".loading__circle", {
-    rotation: 360,
-    repeat: -1,
-    duration: 20,
-    ease: "none"
-  });
-</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollTrigger.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/TextPlugin.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollToPlugin.min.js"></script>
-<script src="scripts/CustomEase.min.js"></script>
-<script src="https://unpkg.com/scrollbooster@2/dist/scrollbooster.min.js"></script>
-<script src="scripts/scripts.js" defer></script>
+<script src="./dist/swup.min.js"></script>
+<script src="./dist/SwupJsPlugin.min.js"></script>
+<script src="./dist/SwupScrollPlugin.min.js"></script>
+<script type="module" src="scripts/manager.js" defer></script>
 
 </body>
 

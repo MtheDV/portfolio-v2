@@ -1,328 +1,102 @@
 /* scripts for use in website
  * created by mathew de vin
  */
+import {commonAnimations, killCommonAnimations} from "./common.js";
 
-///////////////////////////////////////
-//////////////// GSAP /////////////////
-///////////////////////////////////////
-gsap.registerPlugin(ScrollTrigger);
-gsap.registerPlugin(TextPlugin);
-gsap.registerPlugin(ScrollToPlugin);
+/* SKEW */
+// potential refactor so that events can be added to the images instead of the window
+const skew = (e, ...skewAlongside) => {
+  let boundRect = e.target.getBoundingClientRect();
+  let mouseX = e.clientX;
+  let mouseY = e.clientY;
+  let imageWidth = boundRect.width;
+  let imageHeight = boundRect.height;
+  let imageX = boundRect.x;
+  let imageY = boundRect.y;
 
-let timelineMain = new TimelineMax({paused: true});
+  let rotateY = -1 * ((imageX + imageWidth / 2) - mouseX) / imageWidth * 20;
+  let rotateX = ((imageY + imageHeight / 2) - mouseY) / imageHeight * 20;
 
-ScrollTrigger.defaults({
-  toggleActions: "restart none none reverse",
-  markers: false
-});
+  e.target.style["-webkit-transform"] = "rotateY(" + rotateY + "deg) rotateX(" + rotateX + "deg)";
+  e.target.style["-ms-transform"] = "rotateY(" + rotateY + "deg) rotateX(" + rotateX + "deg)";
+  e.target.style.transform = "rotateY(" + rotateY + "deg) rotateX(" + rotateX + "deg)";
 
-window.onload = () => {
-  document.querySelector(".loading").style.position = "absolute";
+  for (let i = 0; i < skewAlongside.length; ++i) {
+    skewAlongside[i].style["-webkit-transform"] = "rotateY(" + rotateY + "deg) rotateX(" + rotateX + "deg)";
+    skewAlongside[i].style["-ms-transform"] = "rotateY(" + rotateY + "deg) rotateX(" + rotateX + "deg)";
+    skewAlongside[i].style.transform = "rotateY(" + rotateY + "deg) rotateX(" + rotateX + "deg)";
+  }
+}
 
-  let t1 = new TimelineMax()
-    .to(".loading__circle", {
-      opacity: 0,
-      duration: 0.5,
-      ease: "none"
-    }).to(".loading__logo", {
-      opacity: 0,
-      duration: 0.25,
-      ease: "none"
-    }).to(".loading__bg", {
-      opacity: 0,
-      duration: 0.75,
-      ease: "circ"
-    });
+const skewListener = (e) => {
+  if (e.target.classList.contains("projects__image")) {
+    skew(e);
+  }
+}
 
-  let tIntro = new TimelineMax({
-    scrollTrigger: {
-      trigger: ".intro__content",
-      start: "center center",
-      end: "center top-=500",
-      scrub: true,
-      pin: true
-    }
-  }).to(".intro__content", {
+const addSkew = () => {
+  window.addEventListener("mousemove", skewListener);
+}
+
+const removeSkew = () => {
+  window.removeEventListener("mousemove", skewListener);
+}
+
+function homeFunctions() {
+  commonAnimations();
+
+  gsap.from(".intro", {
     opacity: 0,
-    duration: 5,
-    delay: 10
-  });
-
-  gsap.to(".intro__star", {
-    rotate: 360,
-    duration: 10,
-    repeat: -1,
+    duration: 1.5,
     ease: "none"
   });
 
-  let t2 = new TimelineMax({
-    scrollTrigger: {
-      trigger: ".projects",
-      start: "top-=800 center",
-      end: "top-=800 center-=700",
-      scrub: true
-    }
-  }).to(".nav__element--name", {
-    opacity: 1,
-    duration: 0.75
-  }).to(".links__element", {
-    opacity: 1,
-    stagger: 1
-  }).to(".links__element--about-img", {
-    scale: 1,
-    duration: 0.25
-  });
+  addSkew();
 
-  let tAbout = new TimelineMax({
-    repeat: -1,
-    repeatDelay: 0.25,
-    ease: "none",
-  }).to(".img-1", {
-    display: "block"
-  }).to(".img-1", {
-    display: "none"
-  }).to(".img-2", {
-    display: "block"
-  }).to(".img-2", {
-    display: "none"
-  }).to(".img-3", {
-    display: "block"
-  }).to(".img-3", {
-    display: "none"
-  }).to(".img-4", {
-    display: "block"
-  });
-
-  let t4 = new TimelineMax({
-    scrollTrigger: {
-      trigger: ".projects",
-      start: "top+=300 bottom",
-      end: `top+=300 bottom-=${document.querySelector(".projects").offsetHeight + document.querySelector(".about").offsetHeight + 200}`,
-      scrub: true
-    }
-  }).to(".links__element--about-img", {
-    y: "+=2rem",
-    duration: 40
-  }).to(".links__element--about-img", {
-    y: "+=2rem",
-    marginLeft: "+=0.5rem",
-    duration: 20
-  });
-
-  let projectArray = gsap.utils.toArray(".projects__element--group");
-  projectArray.forEach(project => {
-    ScrollTrigger.create({
-      trigger: project,
-      start: "top center",
-      end: "bottom center",
-      onEnter: self => {
-        gsap.timeline().to(".project-title", {
-          text: {
-            value: project.id,
-            delimiter: " "
-          },
-          duration: 0,
-          ease: "none"
-        }).to(".project-title", {
-          opacity: 1,
-          duration: 0.75,
-          ease: "none"
-        });
-      },
-      onEnterBack: self => {
-        gsap.timeline().to(".project-title", {
-          text: {
-            value: project.id,
-            delimiter: " "
-          },
-          duration: 0,
-          ease: "none"
-        });
+  let projectTitles = document.querySelectorAll(".projects__title");
+  let projects = document.querySelectorAll(".projects__group");
+  projects.forEach((project, index) => {
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: project,
+        start: "center bottom",
+        end: "center top"
       }
+    }).from(project, {
+      yPercent: 20,
+      opacity: 0,
+      duration: 0.5,
+      ease: "none"
+    }).from(projectTitles.item(index), {
+      yPercent: -20,
+      opacity: 0,
+      duration: 0.5,
+      ease: "none"
+    })
+
+    project.addEventListener("mouseover", () => {
+      gsap.to(projectTitles.item(index), {
+        color: "#4173FD",
+        duration: 0.15,
+        ease: "none"
+      });
     });
-  });
-
-  ScrollTrigger.create({
-    trigger: ".projects",
-    start: "top center",
-    end: "bottom-=300 center",
-    snap: {
-      snapTo: [0.11, 0.33, 0.56, 0.8, 1.0], duration: 0.25
-    },
-    onEnter: self => {
-      gsap.to(".project-title", {
-        opacity: 1,
-        duration: 0.25,
+    project.addEventListener("mouseleave", () => {
+      gsap.to(projectTitles.item(index), {
+        color: "#191919",
+        duration: 0.15,
         ease: "none"
       });
-    },
-    onLeaveBack: self => {
-      gsap.to(".project-title", {
-        opacity: 0,
-        duration: 0.25,
-        ease: "none"
-      });
-    }
-  });
-
-  ScrollTrigger.create({
-      trigger: ".projects",
-      start: "bottom center",
-      end: "bottom center",
-      onEnter: self => {
-        gsap.to(".project-title", {
-          opacity: 0,
-          duration: 0.25,
-          ease: "none"
-        });
-      },
-      onEnterBack: self => {
-        gsap.to(".project-title", {
-          opacity: 1,
-          duration: 0.25,
-          ease: "none"
-        });
-      }
-  });
-
-  timelineMain.add(t1, t2, t4, tIntro, tAbout);
-  document.querySelector("body").style.overflowY = "scroll";
-  timelineMain.play();
-
-  ///////////////////////////////////////
-  ////////////// Parallax ///////////////
-  ///////////////////////////////////////
-  let parallaxElementsLanding = document.getElementsByClassName("parallax__element");
-
-  function parallaxCalculate(height, width, mouseY, mouseX, speedX, speedY, xOffset, yOffset) {
-    return [((((height - mouseY) / height * 100) - 50) * speedY) + yOffset,
-      ((((width - mouseX) / width * 100) - 50) * speedX) + xOffset];
-  }
-
-  function parallax(e, parallaxElements) {
-    let width = window.innerWidth;
-    let height = window.innerHeight;
-    let mouseX = e.clientX;
-    let mouseY = e.clientY;
-
-    if (mouseX == null && mouseY == null) {
-      mouseX = width / 2;
-      mouseY = height / 2;
-    }
-
-    if (width >= 450) {
-      for (let i = 0; i < parallaxElements.length; ++i) {
-        let idManipulates = parallaxElements[i].id;
-        idManipulates = idManipulates.split("_");
-        let parallaxCalc = parallaxCalculate(height, width, mouseY, mouseX,
-          Number(idManipulates[0]), Number(idManipulates[1]),
-          Number(idManipulates[2]), Number(idManipulates[3]));
-
-        parallaxElements[i].style["-webkit-transform"] = "translate3d(" + (parallaxCalc[1]) + "vw," + (parallaxCalc[0]) + "vh, 0)";
-        parallaxElements[i].style["-ms-transform"] = "translate3d(" + (parallaxCalc[1]) + "vw," + (parallaxCalc[0]) + "vh, 0)";
-        parallaxElements[i].style.transform = "translate3d(" + (parallaxCalc[1]) + "vw," + (parallaxCalc[0]) + "vh, 0)";
-        if (!parallaxElements[i].classList.contains("no-z-index-change"))
-          parallaxElements[i].style.zIndex = (parallaxElements.length * -1 - i).toString();
-      }
-    }
-  }
-
-  window.addEventListener("mousemove", (e) => {
-    if (window.innerWidth >= 1100)
-      parallax(e, parallaxElementsLanding);
-    //parallax(e, parallaxProjectGroup)
-  });
-  window.dispatchEvent(new Event("mousemove"));
-
-  ///////////////////////////////////////
-  //////////// HOVER SKEW ///////////////
-  ///////////////////////////////////////
-  function skew(e, ...skewAlongside) {
-    let boundRect = e.target.getBoundingClientRect();
-    let mouseX = e.clientX;
-    let mouseY = e.clientY;
-    let imageWidth = boundRect.width;
-    let imageHeight = boundRect.height;
-    let imageX = boundRect.x;
-    let imageY = boundRect.y;
-
-    let rotateY = -1 * ((imageX + imageWidth / 2) - mouseX) / imageWidth * 20;
-    let rotateX = ((imageY + imageHeight / 2) - mouseY) / imageHeight * 20;
-
-    e.target.style["-webkit-transform"] = "rotateY(" + rotateY + "deg) rotateX(" + rotateX + "deg)";
-    e.target.style["-ms-transform"] = "rotateY(" + rotateY + "deg) rotateX(" + rotateX + "deg)";
-    e.target.style.transform = "rotateY(" + rotateY + "deg) rotateX(" + rotateX + "deg)";
-
-    for (let i = 0; i < skewAlongside.length; ++i) {
-      skewAlongside[i].style["-webkit-transform"] = "rotateY(" + rotateY + "deg) rotateX(" + rotateX + "deg)";
-      skewAlongside[i].style["-ms-transform"] = "rotateY(" + rotateY + "deg) rotateX(" + rotateX + "deg)";
-      skewAlongside[i].style.transform = "rotateY(" + rotateY + "deg) rotateX(" + rotateX + "deg)";
-    }
-  }
-
-  window.addEventListener("mousemove", (e) => {
-    if (window.innerWidth >= 800)
-      if (e.target.classList.contains("projects__element--image")) {
-        skew(e);
-      }
-  });
-
-  ///////////////////////////////////////
-  /////////// Project View //////////////
-  ///////////////////////////////////////
-  let scrollBooster = new ScrollBooster({
-    viewport: document.querySelector(".project-view"),
-    content: document.querySelector(".project-view__project"),
-    scrollMode: "transform",
-    direction: "horizontal",
-  });
-
-  let projectView = document.getElementsByClassName("project-view__project");
-  let projectsGroup = document.getElementsByClassName("projects__element--group");
-  let exitProjectButton = document.querySelector(".project-view__exit");
-  let projectViewOverall = document.querySelector(".project-view");
-  let projectViewLinks = document.getElementsByClassName("project-view__link");
-  let body = document.querySelector("body");
-
-  const hideProjectView = () => {
-    projectViewOverall.style.display = "none";
-    body.style.overflowY = "scroll";
-    for (let j = 0; j < projectView.length; ++j) {
-      projectView[j].style.display = "none";
-    }
-  }
-
-  exitProjectButton.onclick = () => hideProjectView();
-  exitProjectButton.ontouchstart = () => hideProjectView();
-
-  for (let i = 0; i < projectViewLinks.length; ++i) {
-    projectViewLinks[i].ontouchstart = () => {
-      window.open(projectViewLinks[i].href, "_blank");
-    }
-  }
-
-  const displayProjectView = (i) => {
-    hideProjectView();
-    body.style.overflowY = "hidden";
-    projectViewOverall.style.display = "grid";
-    projectViewOverall.style.pointerEvents = "all";
-    projectView[i].style.display = "flex";
-    scrollBooster.updateOptions({content: projectView[i]})
-    scrollBooster.updateMetrics();
-  }
-
-  for (let i = 0; i < projectView.length; ++i) {
-    projectsGroup[i].onclick = () => {
-      displayProjectView(i);
-    }
-  }
-
-  let dragProjectText = document.querySelector(".project-view__drag-text");
-
-  window.addEventListener("mousemove", (e) => {
-    if (window.innerWidth >= 800) {
-      dragProjectText.style.top = e.clientY + "px";
-      dragProjectText.style.left = e.clientX + "px";
-    }
+    })
   });
 }
+
+function destroyHomeFunctions() {
+  removeSkew();
+  killCommonAnimations();
+}
+
+export {
+  homeFunctions,
+  destroyHomeFunctions
+};
