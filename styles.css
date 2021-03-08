@@ -44,6 +44,7 @@ h1 {
   grid-column: content-s / span 3;
   grid-row: 1 / 1;
   width: 100%;
+  height: auto;
   margin-top: 3rem; }
 
 .arrow {
@@ -74,6 +75,7 @@ h1 {
   .projects__image {
     margin: 0 auto;
     cursor: pointer;
+    height: auto;
     transition: all 0.1s linear; }
   .projects .construct {
     width: 37rem; }
@@ -162,6 +164,7 @@ h1 {
     margin: 0; }
   .back .star {
     width: 5rem;
+    height: auto;
     margin: auto 3rem; }
 
 .back--bottom {
@@ -268,6 +271,9 @@ h1 {
     font-size: 3rem; }
 
   .info .paragraph {
-    width: 100%; } }
+    font-size: 3rem;
+    width: 100%; }
+  .info .link {
+    font-size: 3rem; } }
 
 /*# sourceMappingURL=styles.css.map */
