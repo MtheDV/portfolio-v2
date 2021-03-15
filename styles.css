@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap");
 * {
-  font-size: 16px; }
+  font-size: 12px; }
 
 html {
   font-family: 'Manrope', sans-serif; }
@@ -70,7 +70,7 @@ h1 {
   .projects__main__title {
     font-size: 6rem;
     text-align: center;
-    padding-bottom: 4rem; }
+    padding-bottom: 10rem; }
   .projects__title {
     font-size: 5rem;
     text-align: center;
@@ -93,7 +93,7 @@ h1 {
     width: 33rem; }
 
 .about {
-  grid-column: 5 / -5;
+  grid-column: 4 / -4;
   grid-row: 3 / 3;
   margin: 0 0 15rem;
   width: 100%; }
@@ -101,7 +101,7 @@ h1 {
     font-size: 6rem;
     text-align: center; }
   .about__paragraph {
-    font-size: 1.5rem;
+    font-size: 2rem;
     line-height: 200%; }
 
 .footer__background {
@@ -144,7 +144,7 @@ h1 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    height: 30vh;
+    height: 20vh;
     margin: 6rem 0; }
     .footer .stars .star {
       margin: 0;
@@ -200,7 +200,6 @@ h1 {
   .info .link {
     font-size: 2rem;
     color: white;
-    text-decoration: none;
     margin: 0 0 3rem; }
     .info .link:hover {
       color: #4173FD; }
@@ -227,7 +226,7 @@ h1 {
     height: 100vh; } }
 @media (max-width: 1380px) {
   .about {
-    grid-column: 3 / -3;
+    grid-column: 2 / -2;
     grid-row: 3 / 3; }
 
   .footer .stars .star:last-of-type {
@@ -272,7 +271,7 @@ h1 {
     height: 20rem; } }
 @media (max-width: 768px) {
   .about__paragraph {
-    font-size: 3rem; }
+    font-size: 2.5rem; }
 
   .info .paragraph {
     font-size: 3rem;
